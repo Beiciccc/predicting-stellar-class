@@ -6,7 +6,7 @@ from sklearn.model_selection import StratifiedKFold
 DATA_DIR = "/kaggle/input/playground-series-s6e6"
 CLASSES = ["GALAXY", "QSO", "STAR"]
 TARGET = "class"
-CLASS_BIAS = np.array([0.0, 0.6042733745066214, 0.46497753542355225])
+CLASS_BIAS = np.array([0.0, 0.5792733745066214, 0.46497753542355225])
 
 
 def add_features(df):
