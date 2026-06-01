@@ -18,6 +18,7 @@ def main() -> None:
     parser.add_argument("--trials", type=int, default=20000)
     parser.add_argument("--scale", type=float, default=0.35)
     parser.add_argument("--seed", type=int, default=42)
+    parser.add_argument("--output", type=Path, default=None)
     args = parser.parse_args()
 
     df = pd.read_csv(args.oof)
@@ -42,9 +43,11 @@ def main() -> None:
         "best_balanced_accuracy": float(best_score),
         "bias": {label: float(value) for label, value in zip(CLASSES, best_bias)},
     }
+    if args.output is not None:
+        args.output.parent.mkdir(parents=True, exist_ok=True)
+        args.output.write_text(json.dumps(payload, indent=2), encoding="utf-8")
     print(json.dumps(payload, indent=2))
 
 
 if __name__ == "__main__":
     main()
-

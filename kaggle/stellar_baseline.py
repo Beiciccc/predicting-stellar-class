@@ -52,7 +52,7 @@ for fold, (trn_idx, val_idx) in enumerate(skf.split(train_x, y), start=1):
     model = LGBMClassifier(
         objective="multiclass",
         num_class=len(CLASSES),
-        n_estimators=600,
+        n_estimators=700,
         learning_rate=0.05,
         num_leaves=96,
         subsample=0.9,
@@ -71,4 +71,3 @@ submission = sample_submission.copy()
 submission[TARGET] = [CLASSES[idx] for idx in test_proba.argmax(axis=1)]
 submission.to_csv("/kaggle/working/submission.csv", index=False)
 print(submission.head())
-
