@@ -5,6 +5,7 @@
 | prep | 2026-06-01 | pending | none | 0 | n/a | n/a | Project setup, data download, baseline scaffold |
 | smoke_lgbm | 2026-06-01 | pending | LightGBM | 5 | 0.953786 | n/a | 30000-row stratified smoke test; submission schema verified |
 | s6e6-01 | 2026-06-01 | pending | LightGBM seed 42, 700 estimators | 5 | 0.964407 | 0.96551 | Raw full-data baseline |
+| s6e6-02 | 2026-06-01 | pending | LightGBM seed 42, 700 estimators + class bias | 5 | 0.965440 | 0.96632 | OOF log-probability bias: QSO +0.6043, STAR +0.4650 |
 
 ## Calibration Notes
 

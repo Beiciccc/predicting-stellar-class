@@ -6,6 +6,7 @@ from sklearn.model_selection import StratifiedKFold
 DATA_DIR = "/kaggle/input/playground-series-s6e6"
 CLASSES = ["GALAXY", "QSO", "STAR"]
 TARGET = "class"
+CLASS_BIAS = np.array([0.0, 0.6042733745066214, 0.46497753542355225])
 
 
 def add_features(df):
@@ -68,6 +69,6 @@ for fold, (trn_idx, val_idx) in enumerate(skf.split(train_x, y), start=1):
     test_proba += model.predict_proba(test_x) / skf.n_splits
 
 submission = sample_submission.copy()
-submission[TARGET] = [CLASSES[idx] for idx in test_proba.argmax(axis=1)]
+submission[TARGET] = [CLASSES[idx] for idx in (np.log(np.clip(test_proba, 1e-12, 1.0)) + CLASS_BIAS).argmax(axis=1)]
 submission.to_csv("/kaggle/working/submission.csv", index=False)
 print(submission.head())
