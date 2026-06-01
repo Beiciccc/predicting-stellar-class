@@ -1,0 +1,107 @@
+#!/usr/bin/env python3
+from __future__ import annotations
+
+import argparse
+import csv
+import io
+import subprocess
+import time
+from pathlib import Path
+
+
+def run(args: list[str]) -> str:
+    result = subprocess.run(args, text=True, capture_output=True)
+    if result.returncode != 0:
+        raise RuntimeError(result.stderr.strip() or result.stdout.strip())
+    return result.stdout.strip()
+
+
+def submissions_table(competition: str) -> str:
+    return run(["kaggle", "competitions", "submissions", "-c", competition])
+
+
+def submissions_csv(competition: str) -> list[dict[str, str]]:
+    text = run(["kaggle", "competitions", "submissions", "-c", competition, "-v"])
+    if not text or "No submissions found" in text:
+        return []
+    return list(csv.DictReader(io.StringIO(text)))
+
+
+def count_submission_rows(text: str) -> int:
+    if not text or "No submissions found" in text:
+        return 0
+    lines = [line for line in text.splitlines() if line.strip()]
+    if len(lines) <= 2:
+        return 0
+    return max(0, len(lines) - 2)
+
+
+def public_score(row: dict[str, str]) -> str:
+    for key, value in row.items():
+        normalized = key.lower().replace("_", "")
+        if normalized in {"publicscore", "publicleaderboardscore", "score"}:
+            cleaned = (value or "").strip()
+            if cleaned and cleaned.lower() not in {"none", "null", "nan"}:
+                return cleaned
+    return ""
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("submission", type=Path)
+    parser.add_argument("-m", "--message", required=True)
+    parser.add_argument("-c", "--competition", default="playground-series-s6e6")
+    parser.add_argument("--poll-seconds", type=int, default=60)
+    parser.add_argument("--timeout-minutes", type=int, default=30)
+    parser.add_argument("--dry-run", action="store_true")
+    parser.add_argument("--no-wait-score", action="store_true")
+    args = parser.parse_args()
+
+    if not args.submission.exists():
+        raise FileNotFoundError(args.submission)
+
+    before_table = submissions_table(args.competition)
+    before_rows = submissions_csv(args.competition)
+    before_count = len(before_rows) if before_rows else count_submission_rows(before_table)
+    print(f"submissions_before: {before_count}")
+
+    if args.dry_run:
+        print("dry_run: submission not sent")
+        return
+
+    print(run([
+        "kaggle",
+        "competitions",
+        "submit",
+        "-c",
+        args.competition,
+        "-f",
+        str(args.submission),
+        "-m",
+        args.message,
+    ]))
+
+    deadline = time.time() + args.timeout_minutes * 60
+    last = ""
+    while time.time() < deadline:
+        time.sleep(args.poll_seconds)
+        current_table = submissions_table(args.competition)
+        current_rows = submissions_csv(args.competition)
+        current_count = len(current_rows) if current_rows else count_submission_rows(current_table)
+        if current_table != last:
+            print(current_table)
+            last = current_table
+        if current_count > before_count and args.no_wait_score:
+            print("submission_record_created: true")
+            return
+        if current_count > before_count and current_rows:
+            score = public_score(current_rows[0])
+            if score:
+                print(f"public_score: {score}")
+                return
+
+    raise TimeoutError("Timed out waiting for a new scored submission record.")
+
+
+if __name__ == "__main__":
+    main()

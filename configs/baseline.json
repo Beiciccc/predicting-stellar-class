@@ -1,0 +1,22 @@
+{
+  "competition": "playground-series-s6e6",
+  "target": "class",
+  "id_column": "id",
+  "classes": ["GALAXY", "QSO", "STAR"],
+  "metric": "balanced_accuracy",
+  "folds": 5,
+  "seed": 42,
+  "model": "lgbm",
+  "numeric_features": [
+    "alpha",
+    "delta",
+    "u",
+    "g",
+    "r",
+    "i",
+    "z",
+    "redshift"
+  ],
+  "categorical_features": ["spectral_type", "galaxy_population"]
+}
+
