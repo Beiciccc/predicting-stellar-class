@@ -4,6 +4,7 @@ outputs/
 models/
 submissions/
 experiments/
+catboost_info/
 
 *.csv
 *.parquet
