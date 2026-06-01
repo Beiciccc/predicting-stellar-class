@@ -11,6 +11,7 @@
 | s6e6-05 | 2026-06-01 | pending | 50/50 LightGBM seed 42 + seed 777 blend + class bias | 5 | 0.965781 | 0.96630 | Highest OOF so far, but public score below single seed 777 |
 | s6e6-06 | 2026-06-01 | pending | LightGBM seed 2024, 1200 estimators + class bias | 5 | 0.965480 | 0.96657 | New best public score; stronger STAR bias |
 | s6e6-07 | 2026-06-01 | pending | LightGBM 3-seed weighted blend + class bias | 5 | 0.965916 | 0.96630 | OOF-best blend underperformed public LB versus seed 2024 single model |
+| s6e6-08 | 2026-06-01 | pending | XGBoost seed 42, 700 estimators + class bias | 5 | 0.965115 | 0.96624 | XGBoost required large QSO/STAR bias; useful as diversity but weaker public score |
 
 ## Calibration Notes
 

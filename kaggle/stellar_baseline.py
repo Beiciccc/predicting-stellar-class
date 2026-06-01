@@ -1,17 +1,16 @@
 import numpy as np
 import pandas as pd
 from lightgbm import LGBMClassifier
+from xgboost import XGBClassifier
 from sklearn.model_selection import StratifiedKFold
 
 DATA_DIR = "/kaggle/input/playground-series-s6e6"
 CLASSES = ["GALAXY", "QSO", "STAR"]
 TARGET = "class"
 MODEL_CONFIGS = [
-    {"seed": 42, "n_estimators": 700, "weight": 0.5},
-    {"seed": 777, "n_estimators": 900, "weight": 0.275},
-    {"seed": 2024, "n_estimators": 1200, "weight": 0.225},
+    {"model": "xgb", "seed": 42, "n_estimators": 700, "weight": 1.0},
 ]
-CLASS_BIAS = np.array([0.0, 0.6116730077976434, 0.5334985974636097])
+CLASS_BIAS = np.array([0.0, 1.2607127929681936, 1.5309032940206722])
 
 
 def add_features(df):
@@ -57,21 +56,36 @@ for config in MODEL_CONFIGS:
     skf = StratifiedKFold(n_splits=5, shuffle=True, random_state=config["seed"])
     model_proba = np.zeros((len(test), len(CLASSES)))
     for fold, (trn_idx, val_idx) in enumerate(skf.split(train_x, y), start=1):
-        model = LGBMClassifier(
-            objective="multiclass",
-            num_class=len(CLASSES),
-            n_estimators=config["n_estimators"],
-            learning_rate=0.05,
-            num_leaves=96,
-            subsample=0.9,
-            colsample_bytree=0.9,
-            reg_alpha=0.05,
-            reg_lambda=0.2,
-            class_weight="balanced",
-            random_state=config["seed"] + fold,
-            n_jobs=-1,
-            verbose=-1,
-        )
+        if config["model"] == "xgb":
+            model = XGBClassifier(
+                objective="multi:softprob",
+                num_class=len(CLASSES),
+                n_estimators=config["n_estimators"],
+                learning_rate=0.05,
+                max_depth=8,
+                subsample=0.9,
+                colsample_bytree=0.9,
+                eval_metric="mlogloss",
+                tree_method="hist",
+                random_state=config["seed"] + fold,
+                n_jobs=-1,
+            )
+        else:
+            model = LGBMClassifier(
+                objective="multiclass",
+                num_class=len(CLASSES),
+                n_estimators=config["n_estimators"],
+                learning_rate=0.05,
+                num_leaves=96,
+                subsample=0.9,
+                colsample_bytree=0.9,
+                reg_alpha=0.05,
+                reg_lambda=0.2,
+                class_weight="balanced",
+                random_state=config["seed"] + fold,
+                n_jobs=-1,
+                verbose=-1,
+            )
         model.fit(train_x.iloc[trn_idx], y[trn_idx])
         model_proba += model.predict_proba(test_x) / skf.n_splits
     test_proba += config["weight"] * model_proba
