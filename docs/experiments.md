@@ -7,6 +7,7 @@
 | s6e6-01 | 2026-06-01 | pending | LightGBM seed 42, 700 estimators | 5 | 0.964407 | 0.96551 | Raw full-data baseline |
 | s6e6-02 | 2026-06-01 | pending | LightGBM seed 42, 700 estimators + class bias | 5 | 0.965440 | 0.96632 | OOF log-probability bias: QSO +0.6043, STAR +0.4650 |
 | s6e6-03 | 2026-06-01 | pending | LightGBM seed 42, 700 estimators + refined class bias | 5 | 0.965457 | 0.96626 | Bias neighborhood test: QSO +0.5793, STAR +0.4650 |
+| s6e6-04 | 2026-06-01 | pending | LightGBM seed 777, 900 estimators + class bias | 5 | 0.965279 | 0.96641 | New best public score; OOF bias QSO +0.7014, STAR +0.6982 |
 
 ## Calibration Notes
 
