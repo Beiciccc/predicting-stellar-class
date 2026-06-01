@@ -10,7 +10,7 @@ TARGET = "class"
 MODEL_CONFIGS = [
     {"model": "lgbm", "seed": 2024, "n_estimators": 1200, "weight": 1.0},
 ]
-CLASS_BIAS = np.array([0.0, 0.44328145694072163, 0.7458005091699238])
+CLASS_BIAS = np.array([0.0, 0.47328145694072165, 0.8658005091699238])
 
 
 def add_features(df):
