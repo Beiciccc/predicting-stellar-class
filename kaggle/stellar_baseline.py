@@ -1,10 +1,11 @@
+from pathlib import Path
+
 import numpy as np
 import pandas as pd
 from lightgbm import LGBMClassifier
 from xgboost import XGBClassifier
 from sklearn.model_selection import StratifiedKFold
 
-DATA_DIR = "/kaggle/input/playground-series-s6e6"
 CLASSES = ["GALAXY", "QSO", "STAR"]
 TARGET = "class"
 MODEL_CONFIGS = [
@@ -43,9 +44,22 @@ def make_matrix(train, test):
     return combined.iloc[: len(train)], combined.iloc[len(train) :]
 
 
-train = pd.read_csv(f"{DATA_DIR}/train.csv")
-test = pd.read_csv(f"{DATA_DIR}/test.csv")
-sample_submission = pd.read_csv(f"{DATA_DIR}/sample_submission.csv")
+def find_data_dir():
+    candidates = [
+        Path("/kaggle/input/playground-series-s6e6"),
+        Path("/kaggle/input/predicting-stellar-class"),
+    ]
+    candidates.extend(path.parent for path in Path("/kaggle/input").glob("**/train.csv"))
+    for candidate in candidates:
+        if (candidate / "train.csv").exists() and (candidate / "test.csv").exists():
+            return candidate
+    raise FileNotFoundError("Could not find train.csv and test.csv under /kaggle/input")
+
+
+DATA_DIR = find_data_dir()
+train = pd.read_csv(DATA_DIR / "train.csv")
+test = pd.read_csv(DATA_DIR / "test.csv")
+sample_submission = pd.read_csv(DATA_DIR / "sample_submission.csv")
 
 train_x, test_x = make_matrix(train, test)
 y = train[TARGET].map({label: idx for idx, label in enumerate(CLASSES)}).to_numpy()
