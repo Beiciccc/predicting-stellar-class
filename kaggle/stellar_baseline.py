@@ -6,8 +6,11 @@ from sklearn.model_selection import StratifiedKFold
 DATA_DIR = "/kaggle/input/playground-series-s6e6"
 CLASSES = ["GALAXY", "QSO", "STAR"]
 TARGET = "class"
-SEED = 777
-CLASS_BIAS = np.array([0.0, 0.7013898538339098, 0.6982218073099267])
+MODEL_CONFIGS = [
+    {"seed": 42, "n_estimators": 700, "weight": 0.5},
+    {"seed": 777, "n_estimators": 900, "weight": 0.5},
+]
+CLASS_BIAS = np.array([0.0, 0.7791371665304565, 0.5840329121396972])
 
 
 def add_features(df):
@@ -47,27 +50,30 @@ sample_submission = pd.read_csv(f"{DATA_DIR}/sample_submission.csv")
 train_x, test_x = make_matrix(train, test)
 y = train[TARGET].map({label: idx for idx, label in enumerate(CLASSES)}).to_numpy()
 
-skf = StratifiedKFold(n_splits=5, shuffle=True, random_state=SEED)
 test_proba = np.zeros((len(test), len(CLASSES)))
 
-for fold, (trn_idx, val_idx) in enumerate(skf.split(train_x, y), start=1):
-    model = LGBMClassifier(
-        objective="multiclass",
-        num_class=len(CLASSES),
-        n_estimators=900,
-        learning_rate=0.05,
-        num_leaves=96,
-        subsample=0.9,
-        colsample_bytree=0.9,
-        reg_alpha=0.05,
-        reg_lambda=0.2,
-        class_weight="balanced",
-        random_state=SEED + fold,
-        n_jobs=-1,
-        verbose=-1,
-    )
-    model.fit(train_x.iloc[trn_idx], y[trn_idx])
-    test_proba += model.predict_proba(test_x) / skf.n_splits
+for config in MODEL_CONFIGS:
+    skf = StratifiedKFold(n_splits=5, shuffle=True, random_state=config["seed"])
+    model_proba = np.zeros((len(test), len(CLASSES)))
+    for fold, (trn_idx, val_idx) in enumerate(skf.split(train_x, y), start=1):
+        model = LGBMClassifier(
+            objective="multiclass",
+            num_class=len(CLASSES),
+            n_estimators=config["n_estimators"],
+            learning_rate=0.05,
+            num_leaves=96,
+            subsample=0.9,
+            colsample_bytree=0.9,
+            reg_alpha=0.05,
+            reg_lambda=0.2,
+            class_weight="balanced",
+            random_state=config["seed"] + fold,
+            n_jobs=-1,
+            verbose=-1,
+        )
+        model.fit(train_x.iloc[trn_idx], y[trn_idx])
+        model_proba += model.predict_proba(test_x) / skf.n_splits
+    test_proba += config["weight"] * model_proba
 
 submission = sample_submission.copy()
 submission[TARGET] = [CLASSES[idx] for idx in (np.log(np.clip(test_proba, 1e-12, 1.0)) + CLASS_BIAS).argmax(axis=1)]
