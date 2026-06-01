@@ -7,10 +7,9 @@ DATA_DIR = "/kaggle/input/playground-series-s6e6"
 CLASSES = ["GALAXY", "QSO", "STAR"]
 TARGET = "class"
 MODEL_CONFIGS = [
-    {"seed": 42, "n_estimators": 700, "weight": 0.5},
-    {"seed": 777, "n_estimators": 900, "weight": 0.5},
+    {"seed": 2024, "n_estimators": 1200, "weight": 1.0},
 ]
-CLASS_BIAS = np.array([0.0, 0.7791371665304565, 0.5840329121396972])
+CLASS_BIAS = np.array([0.0, 0.7160429109227208, 0.8646311306746395])
 
 
 def add_features(df):
