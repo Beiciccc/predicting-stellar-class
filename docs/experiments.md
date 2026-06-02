@@ -18,6 +18,7 @@
 | s6e6-12 | 2026-06-02 | pending | LightGBM seed 2024, 1200 estimators + lower STAR bias | 5 | 0.965508 | 0.96672 | STAR bias reduction hurt public score |
 | s6e6-13 | 2026-06-02 | pending | LightGBM seed 2024, 1200 estimators + higher STAR bias | 5 | 0.965494 | 0.96701 | New best public score; public split favors higher STAR bias |
 | s6e6-14 | 2026-06-02 | pending | LightGBM seed 2024, 1200 estimators + higher QSO bias | 5 | 0.965490 | 0.96666 | Increasing QSO bias hurt public score |
+| s6e6-15 | 2026-06-02 | pending | LightGBM seed 2024, 1200 estimators + STAR 1.00 bias | 5 | 0.965336 | 0.96682 | STAR bias above 0.92 lost public score |
 
 ## Calibration Notes
 
