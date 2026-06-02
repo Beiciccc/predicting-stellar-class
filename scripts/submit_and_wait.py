@@ -9,11 +9,19 @@ import time
 from pathlib import Path
 
 
-def run(args: list[str]) -> str:
-    result = subprocess.run(args, text=True, capture_output=True)
-    if result.returncode != 0:
-        raise RuntimeError(result.stderr.strip() or result.stdout.strip())
-    return result.stdout.strip()
+def run(args: list[str], retries: int = 5) -> str:
+    delay = 30
+    for attempt in range(retries + 1):
+        result = subprocess.run(args, text=True, capture_output=True)
+        if result.returncode == 0:
+            return result.stdout.strip()
+        message = result.stderr.strip() or result.stdout.strip()
+        if "429" not in message or attempt == retries:
+            raise RuntimeError(message)
+        print(f"rate_limited: sleeping {delay}s before retry")
+        time.sleep(delay)
+        delay = min(delay * 2, 180)
+    raise RuntimeError("Unexpected retry loop exit")
 
 
 def submissions_table(competition: str) -> str:

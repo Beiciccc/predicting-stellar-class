@@ -6,12 +6,22 @@ import csv
 import io
 import json
 import subprocess
+import time
 from datetime import datetime, timezone
 
 
-def run_kaggle(args: list[str]) -> str:
-    result = subprocess.run(args, check=True, text=True, capture_output=True)
-    return result.stdout.strip()
+def run_kaggle(args: list[str], retries: int = 5) -> str:
+    delay = 30
+    for attempt in range(retries + 1):
+        result = subprocess.run(args, text=True, capture_output=True)
+        if result.returncode == 0:
+            return result.stdout.strip()
+        message = result.stderr.strip() or result.stdout.strip()
+        if "429" not in message or attempt == retries:
+            raise RuntimeError(message)
+        time.sleep(delay)
+        delay = min(delay * 2, 180)
+    raise RuntimeError("Unexpected retry loop exit")
 
 
 def parse_submissions(text: str) -> list[dict[str, str]]:
@@ -70,4 +80,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-
