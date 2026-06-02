@@ -22,6 +22,7 @@
 | s6e6-16 | 2026-06-02 | pending | LightGBM seed 2024, 1200 estimators + QSO 0.50, STAR 0.92 bias | 5 | 0.965453 | 0.96692 | Lower QSO than s6e6-13 underperformed |
 | s6e6-17 | 2026-06-02 | pending | LightGBM seed 2024, 1200 estimators + QSO 0.55, STAR 0.92 bias | 5 | 0.965464 | 0.96699 | Slightly higher QSO than s6e6-13 underperformed by 0.00002 |
 | s6e6-18 | 2026-06-02 | pending | LightGBM seed 2024, 1200 estimators + QSO 0.53, STAR 0.94 bias | 5 | 0.965464 | 0.96686 | STAR above 0.92 underperformed |
+| s6e6-19 | 2026-06-02 | pending | LightGBM seed 2024, 1200 estimators + QSO 0.52, STAR 0.92 bias | 5 | 0.965483 | 0.96697 | Local QSO adjustment below s6e6-13 underperformed |
 
 ## Calibration Notes
 
