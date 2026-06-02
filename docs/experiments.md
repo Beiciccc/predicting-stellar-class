@@ -15,6 +15,7 @@
 | s6e6-09 | 2026-06-01 | pending | LightGBM seed 2024, 1200 estimators + alternate class bias | 5 | 0.965500 | 0.96669 | New best public score; alternate OOF bias QSO +0.4433, STAR +0.7458 |
 | s6e6-10 | 2026-06-01 | pending | LightGBM seed 2024, 1200 estimators + fine class bias | 5 | 0.965522 | 0.96679 | Best score of this run; fine OOF bias QSO +0.4733, STAR +0.8658 |
 | s6e6-11 | 2026-06-02 | pending | LightGBM seed 2024, 1200 estimators + tighter grid bias | 5 | 0.965525 | 0.96677 | Tiny OOF gain did not improve public score |
+| s6e6-12 | 2026-06-02 | pending | LightGBM seed 2024, 1200 estimators + lower STAR bias | 5 | 0.965508 | 0.96672 | STAR bias reduction hurt public score |
 
 ## Calibration Notes
 
