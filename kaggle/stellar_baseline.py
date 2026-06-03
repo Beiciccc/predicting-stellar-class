@@ -16,6 +16,7 @@ PUBLIC_SUBMISSION_SLUGS = {
     "lr": "gpu-logistic-regression-stacker",
     "flex": "blender-is-all-you-need",
     "nina": "ps-s6e6-vote",
+    "realmlp": "single-realmlp-0-96973-no-blend-ensemble",
     "lgbm_cal": "single-lightgbm-lb-0-96728",
 }
 
@@ -88,7 +89,7 @@ def make_public_unanimous_submission(sample_submission):
     out = submissions["lr"].copy()
     agree = (
         submissions["flex"][TARGET].eq(submissions["nina"][TARGET])
-        & submissions["flex"][TARGET].eq(submissions["lgbm_cal"][TARGET])
+        & submissions["flex"][TARGET].eq(submissions["realmlp"][TARGET])
     )
     out.loc[agree, TARGET] = submissions["flex"].loc[agree, TARGET]
     return out

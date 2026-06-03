@@ -70,6 +70,17 @@ def weighted_vote(labels: dict[str, str], fallback: str) -> str:
     return fallback
 
 
+def weighted_vote_with_weights(labels: dict[str, tuple[str, float]], fallback: str) -> str:
+    scores: dict[str, float] = {}
+    for label, weight in labels.values():
+        scores[label] = scores.get(label, 0.0) + weight
+    best_score = max(scores.values())
+    winners = [label for label, score in scores.items() if score == best_score]
+    if len(winners) == 1:
+        return winners[0]
+    return fallback
+
+
 def main() -> None:
     frames = read_submissions()
     ids = frames["lr"]["id"]
@@ -77,9 +88,15 @@ def main() -> None:
 
     unanimous = []
     flex_nina = []
+    flex_nina_realmlp = []
     top3 = []
+    lr_flex_nina_realmlp = []
     lr_lgbm_ours = []
+    lr_flex_nina_lgbm_ours = []
     weighted = []
+    weighted_core = []
+    weighted_diverse_star = []
+    star_safe = []
     realmlp_flex_nina = []
 
     for idx in range(len(lr)):
@@ -92,8 +109,11 @@ def main() -> None:
 
         unanimous.append(flex if flex == nina == lgbm else base)
         flex_nina.append(flex if flex == nina else base)
+        flex_nina_realmlp.append(flex if flex == nina == realmlp else base)
         top3.append(majority_vote([base, flex, nina], base))
+        lr_flex_nina_realmlp.append(majority_vote([base, flex, nina, realmlp], base))
         lr_lgbm_ours.append(majority_vote([base, lgbm, ours], base))
+        lr_flex_nina_lgbm_ours.append(majority_vote([base, flex, nina, lgbm, ours], base))
         realmlp_flex_nina.append(majority_vote([realmlp, flex, nina], base))
         weighted.append(
             weighted_vote(
@@ -108,13 +128,50 @@ def main() -> None:
                 base,
             )
         )
+        weighted_core.append(
+            weighted_vote_with_weights(
+                {
+                    "lr": (base, 1.00),
+                    "flex": (flex, 0.88),
+                    "nina": (nina, 0.88),
+                    "realmlp": (realmlp, 0.70),
+                    "lgbm_cal": (lgbm, 0.45),
+                },
+                base,
+            )
+        )
+        weighted_diverse_star.append(
+            weighted_vote_with_weights(
+                {
+                    "lr": (base, 1.00),
+                    "flex": (flex, 0.75),
+                    "nina": (nina, 0.75),
+                    "realmlp": (realmlp, 0.65),
+                    "lgbm_cal": (lgbm, 0.55),
+                    "ours13": (ours, 0.35),
+                },
+                base,
+            )
+        )
+        external_votes = [flex, nina, realmlp, lgbm, ours]
+        top_label, top_count = Counter(external_votes).most_common(1)[0]
+        if top_count >= 3 and not (top_label == "QSO" and top_count < 5):
+            star_safe.append(top_label)
+        else:
+            star_safe.append(base)
 
     save("lr_anchor_flex_nina_lgbm_unanimous", ids, unanimous, lr)
     save("lr_anchor_flex_nina_majority", ids, flex_nina, lr)
+    save("lr_anchor_flex_nina_realmlp_unanimous", ids, flex_nina_realmlp, lr)
     save("top3_lr_flex_nina_majority", ids, top3, lr)
+    save("hard_vote_lr_flex_nina_realmlp", ids, lr_flex_nina_realmlp, lr)
     save("lr_lgbm_ours_majority", ids, lr_lgbm_ours, lr)
+    save("hard_vote_lr_flex_nina_lgbm_ours", ids, lr_flex_nina_lgbm_ours, lr)
     save("realmlp_flex_nina_majority", ids, realmlp_flex_nina, lr)
     save("weighted_public_vote", ids, weighted, lr)
+    save("weighted_core_vote", ids, weighted_core, lr)
+    save("weighted_diverse_star_vote", ids, weighted_diverse_star, lr)
+    save("anchor_3of5_star_safe", ids, star_safe, lr)
 
 
 if __name__ == "__main__":

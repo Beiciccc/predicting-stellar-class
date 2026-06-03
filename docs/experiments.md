@@ -27,6 +27,7 @@
 | s6e6-21 | 2026-06-03 | pending | Public GPU logistic-regression stacker | n/a | 0.969656 | 0.97021 | Public output from `cdeotte/gpu-logistic-regression-stacker`; schema verified |
 | s6e6-22 | 2026-06-03 | pending | Public weighted submission blender | n/a | n/a | 0.97015 | Public output from `flexonafft/blender-is-all-you-need`; slightly below s6e6-21 |
 | s6e6-23 | 2026-06-03 | pending | LR stacker anchored public unanimous overwrite | n/a | n/a | 0.97051 | Base `cdeotte` LR stacker; overwrite 441 rows where `flex`, `nina`, and public calibrated LGBM agree |
+| s6e6-24 | 2026-06-03 | pending | LR stacker anchored RealMLP unanimous overwrite | n/a | n/a | 0.97018 | Base `cdeotte` LR stacker; overwrite 939 rows where `flex`, `nina`, and public RealMLP agree; lower than s6e6-23 |
 | sdss17_w025 | 2026-06-02 | pending | LightGBM seed 2024 + SDSS17 external weight 0.25 | 5 | 0.963139 | n/a | Not submitted; external-data OOF was materially weaker |
 
 ## Calibration Notes
