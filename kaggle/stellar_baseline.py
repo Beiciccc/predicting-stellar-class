@@ -12,7 +12,12 @@ MODEL_CONFIGS = [
     {"model": "lgbm", "seed": 2024, "n_estimators": 1200, "weight": 1.0},
 ]
 CLASS_BIAS = np.array([0.0, 0.535, 0.92])
-PUBLIC_SUBMISSION_SLUGS = ["blender-is-all-you-need"]
+PUBLIC_SUBMISSION_SLUGS = {
+    "lr": "gpu-logistic-regression-stacker",
+    "flex": "blender-is-all-you-need",
+    "nina": "ps-s6e6-vote",
+    "lgbm_cal": "single-lightgbm-lb-0-96728",
+}
 
 
 def add_features(df):
@@ -57,20 +62,36 @@ def find_data_dir():
     raise FileNotFoundError("Could not find train.csv and test.csv under /kaggle/input")
 
 
-def find_public_submission(sample_submission):
+def find_public_submission(slug, sample_submission):
     input_root = Path("/kaggle/input")
-    for slug in PUBLIC_SUBMISSION_SLUGS:
-        for path in input_root.glob(f"**/{slug}/submission.csv"):
-            candidate = pd.read_csv(path)
-            if list(candidate.columns) == ["id", TARGET] and candidate["id"].equals(sample_submission["id"]):
-                return candidate
-        for path in input_root.glob("**/submission.csv"):
-            if slug not in str(path):
-                continue
-            candidate = pd.read_csv(path)
-            if list(candidate.columns) == ["id", TARGET] and candidate["id"].equals(sample_submission["id"]):
-                return candidate
+    for path in input_root.glob(f"**/{slug}/submission.csv"):
+        candidate = pd.read_csv(path)
+        if list(candidate.columns) == ["id", TARGET] and candidate["id"].equals(sample_submission["id"]):
+            return candidate
+    for path in input_root.glob("**/submission.csv"):
+        if slug not in str(path):
+            continue
+        candidate = pd.read_csv(path)
+        if list(candidate.columns) == ["id", TARGET] and candidate["id"].equals(sample_submission["id"]):
+            return candidate
     return None
+
+
+def make_public_unanimous_submission(sample_submission):
+    submissions = {
+        name: find_public_submission(slug, sample_submission)
+        for name, slug in PUBLIC_SUBMISSION_SLUGS.items()
+    }
+    if not all(frame is not None for frame in submissions.values()):
+        return None
+
+    out = submissions["lr"].copy()
+    agree = (
+        submissions["flex"][TARGET].eq(submissions["nina"][TARGET])
+        & submissions["flex"][TARGET].eq(submissions["lgbm_cal"][TARGET])
+    )
+    out.loc[agree, TARGET] = submissions["flex"].loc[agree, TARGET]
+    return out
 
 
 DATA_DIR = find_data_dir()
@@ -78,7 +99,7 @@ train = pd.read_csv(DATA_DIR / "train.csv")
 test = pd.read_csv(DATA_DIR / "test.csv")
 sample_submission = pd.read_csv(DATA_DIR / "sample_submission.csv")
 
-public_submission = find_public_submission(sample_submission)
+public_submission = make_public_unanimous_submission(sample_submission)
 if public_submission is not None:
     public_submission.to_csv("/kaggle/working/submission.csv", index=False)
     print(public_submission.head())

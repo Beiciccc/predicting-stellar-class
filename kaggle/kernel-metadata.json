@@ -1,5 +1,5 @@
 {
-  "id": "beicicc/predicting-stellar-class-baseline",
+  "id": "beicicc/predicting-stellar-class-public-blend",
   "title": "Predicting Stellar Class Public Blend",
   "code_file": "stellar_baseline.py",
   "language": "python",
@@ -9,5 +9,10 @@
   "enable_internet": false,
   "competition_sources": ["playground-series-s6e6"],
   "dataset_sources": [],
-  "kernel_sources": ["flexonafft/blender-is-all-you-need"]
+  "kernel_sources": [
+    "cdeotte/gpu-logistic-regression-stacker",
+    "flexonafft/blender-is-all-you-need",
+    "nina2025/ps-s6e6-vote",
+    "evgendvorkin/single-lightgbm-lb-0-96728"
+  ]
 }
