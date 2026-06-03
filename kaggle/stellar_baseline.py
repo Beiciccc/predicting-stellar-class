@@ -1,3 +1,4 @@
+from collections import Counter
 from pathlib import Path
 
 import numpy as np
@@ -11,12 +12,11 @@ TARGET = "class"
 MODEL_CONFIGS = [
     {"model": "lgbm", "seed": 2024, "n_estimators": 1200, "weight": 1.0},
 ]
-CLASS_BIAS = np.array([0.0, 0.535, 0.92])
+CLASS_BIAS = np.array([0.0, 0.53, 0.92])
 PUBLIC_SUBMISSION_SLUGS = {
     "lr": "gpu-logistic-regression-stacker",
     "flex": "blender-is-all-you-need",
     "nina": "ps-s6e6-vote",
-    "realmlp": "single-realmlp-0-96973-no-blend-ensemble",
     "lgbm_cal": "single-lightgbm-lb-0-96728",
 }
 
@@ -78,21 +78,91 @@ def find_public_submission(slug, sample_submission):
     return None
 
 
-def make_public_unanimous_submission(sample_submission):
+def plurality_vote(labels, fallback):
+    top_label, top_count = Counter(labels).most_common(1)[0]
+    if top_count >= 2:
+        return top_label
+    return fallback
+
+
+def make_public_vote_submission(sample_submission, model_submission):
     submissions = {
         name: find_public_submission(slug, sample_submission)
         for name, slug in PUBLIC_SUBMISSION_SLUGS.items()
     }
-    if not all(frame is not None for frame in submissions.values()):
+    required = ["lr", "flex", "nina", "lgbm_cal"]
+    if any(submissions[name] is None for name in required):
         return None
 
     out = submissions["lr"].copy()
-    agree = (
-        submissions["flex"][TARGET].eq(submissions["nina"][TARGET])
-        & submissions["flex"][TARGET].eq(submissions["realmlp"][TARGET])
-    )
-    out.loc[agree, TARGET] = submissions["flex"].loc[agree, TARGET]
+    voted = []
+    for idx, base in enumerate(submissions["lr"][TARGET]):
+        voted.append(
+            plurality_vote(
+                [
+                    base,
+                    submissions["flex"][TARGET].iat[idx],
+                    submissions["nina"][TARGET].iat[idx],
+                    submissions["lgbm_cal"][TARGET].iat[idx],
+                    model_submission[TARGET].iat[idx],
+                ],
+                base,
+            )
+        )
+    out[TARGET] = voted
     return out
+
+
+def make_model_submission(train, test, sample_submission):
+    train_x, test_x = make_matrix(train, test)
+    y = train[TARGET].map({label: idx for idx, label in enumerate(CLASSES)}).to_numpy()
+
+    test_proba = np.zeros((len(test), len(CLASSES)))
+
+    for config in MODEL_CONFIGS:
+        skf = StratifiedKFold(n_splits=5, shuffle=True, random_state=config["seed"])
+        model_proba = np.zeros((len(test), len(CLASSES)))
+        for fold, (trn_idx, val_idx) in enumerate(skf.split(train_x, y), start=1):
+            if config["model"] == "xgb":
+                model = XGBClassifier(
+                    objective="multi:softprob",
+                    num_class=len(CLASSES),
+                    n_estimators=config["n_estimators"],
+                    learning_rate=0.05,
+                    max_depth=8,
+                    subsample=0.9,
+                    colsample_bytree=0.9,
+                    eval_metric="mlogloss",
+                    tree_method="hist",
+                    random_state=config["seed"] + fold,
+                    n_jobs=-1,
+                )
+            else:
+                model = LGBMClassifier(
+                    objective="multiclass",
+                    num_class=len(CLASSES),
+                    n_estimators=config["n_estimators"],
+                    learning_rate=0.05,
+                    num_leaves=96,
+                    subsample=0.9,
+                    colsample_bytree=0.9,
+                    reg_alpha=0.05,
+                    reg_lambda=0.2,
+                    class_weight="balanced",
+                    random_state=config["seed"] + fold,
+                    n_jobs=-1,
+                    verbose=-1,
+                )
+            model.fit(train_x.iloc[trn_idx], y[trn_idx])
+            model_proba += model.predict_proba(test_x) / skf.n_splits
+        test_proba += config["weight"] * model_proba
+
+    submission = sample_submission.copy()
+    submission[TARGET] = [
+        CLASSES[idx]
+        for idx in (np.log(np.clip(test_proba, 1e-12, 1.0)) + CLASS_BIAS).argmax(axis=1)
+    ]
+    return submission
 
 
 DATA_DIR = find_data_dir()
@@ -100,56 +170,10 @@ train = pd.read_csv(DATA_DIR / "train.csv")
 test = pd.read_csv(DATA_DIR / "test.csv")
 sample_submission = pd.read_csv(DATA_DIR / "sample_submission.csv")
 
-public_submission = make_public_unanimous_submission(sample_submission)
-if public_submission is not None:
-    public_submission.to_csv("/kaggle/working/submission.csv", index=False)
-    print(public_submission.head())
-    raise SystemExit
+model_submission = make_model_submission(train, test, sample_submission)
+submission = make_public_vote_submission(sample_submission, model_submission)
+if submission is None:
+    submission = model_submission
 
-train_x, test_x = make_matrix(train, test)
-y = train[TARGET].map({label: idx for idx, label in enumerate(CLASSES)}).to_numpy()
-
-test_proba = np.zeros((len(test), len(CLASSES)))
-
-for config in MODEL_CONFIGS:
-    skf = StratifiedKFold(n_splits=5, shuffle=True, random_state=config["seed"])
-    model_proba = np.zeros((len(test), len(CLASSES)))
-    for fold, (trn_idx, val_idx) in enumerate(skf.split(train_x, y), start=1):
-        if config["model"] == "xgb":
-            model = XGBClassifier(
-                objective="multi:softprob",
-                num_class=len(CLASSES),
-                n_estimators=config["n_estimators"],
-                learning_rate=0.05,
-                max_depth=8,
-                subsample=0.9,
-                colsample_bytree=0.9,
-                eval_metric="mlogloss",
-                tree_method="hist",
-                random_state=config["seed"] + fold,
-                n_jobs=-1,
-            )
-        else:
-            model = LGBMClassifier(
-                objective="multiclass",
-                num_class=len(CLASSES),
-                n_estimators=config["n_estimators"],
-                learning_rate=0.05,
-                num_leaves=96,
-                subsample=0.9,
-                colsample_bytree=0.9,
-                reg_alpha=0.05,
-                reg_lambda=0.2,
-                class_weight="balanced",
-                random_state=config["seed"] + fold,
-                n_jobs=-1,
-                verbose=-1,
-            )
-        model.fit(train_x.iloc[trn_idx], y[trn_idx])
-        model_proba += model.predict_proba(test_x) / skf.n_splits
-    test_proba += config["weight"] * model_proba
-
-submission = sample_submission.copy()
-submission[TARGET] = [CLASSES[idx] for idx in (np.log(np.clip(test_proba, 1e-12, 1.0)) + CLASS_BIAS).argmax(axis=1)]
 submission.to_csv("/kaggle/working/submission.csv", index=False)
 print(submission.head())
