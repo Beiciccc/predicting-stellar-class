@@ -30,6 +30,7 @@
 | s6e6-24 | 2026-06-03 | pending | LR stacker anchored RealMLP unanimous overwrite | n/a | n/a | 0.97018 | Base `cdeotte` LR stacker; overwrite 939 rows where `flex`, `nina`, and public RealMLP agree; lower than s6e6-23 |
 | s6e6-25 | 2026-06-03 | pending | Public stacker/blender/LGBM plus local LGBM hard vote | n/a | n/a | 0.97064 | Five-way plurality vote over `cdeotte`, `flex`, `nina`, public calibrated LGBM, and local best LGBM; new best |
 | s6e6-26 | 2026-06-03 | pending | Five-way vote with QSO strict-three rule | n/a | n/a | 0.97065 | Same as s6e6-25, but QSO needs at least three votes; changed 3 rows and became new best |
+| s6e6-27 | 2026-06-03 | pending | Five-way vote with QSO two-vote fallback to non-QSO | n/a | n/a | 0.97064 | Changed 3 rows versus s6e6-26; fallback to non-QSO underperformed LR fallback |
 | sdss17_w025 | 2026-06-02 | pending | LightGBM seed 2024 + SDSS17 external weight 0.25 | 5 | 0.963139 | n/a | Not submitted; external-data OOF was materially weaker |
 
 ## Calibration Notes
