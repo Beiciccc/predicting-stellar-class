@@ -16,9 +16,21 @@ def run(args: list[str], retries: int = 5) -> str:
         if result.returncode == 0:
             return result.stdout.strip()
         message = result.stderr.strip() or result.stdout.strip()
-        if "429" not in message or attempt == retries:
+        transient = any(
+            token in message
+            for token in [
+                "429",
+                "Connection timed out",
+                "ConnectTimeoutError",
+                "Max retries exceeded",
+                "Read timed out",
+                "Remote end closed connection",
+                "Temporary failure",
+            ]
+        )
+        if not transient or attempt == retries:
             raise RuntimeError(message)
-        print(f"rate_limited: sleeping {delay}s before retry")
+        print(f"transient_kaggle_error: sleeping {delay}s before retry")
         time.sleep(delay)
         delay = min(delay * 2, 180)
     raise RuntimeError("Unexpected retry loop exit")

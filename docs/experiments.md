@@ -25,6 +25,7 @@
 | s6e6-19 | 2026-06-02 | pending | LightGBM seed 2024, 1200 estimators + QSO 0.52, STAR 0.92 bias | 5 | 0.965483 | 0.96697 | Local QSO adjustment below s6e6-13 underperformed |
 | s6e6-20 | 2026-06-02 | pending | LightGBM seed 2024, 1200 estimators + QSO 0.535, STAR 0.92 bias | 5 | 0.965485 | 0.96698 | Local QSO midpoint underperformed s6e6-13 |
 | s6e6-21 | 2026-06-03 | pending | Public GPU logistic-regression stacker | n/a | 0.969656 | 0.97021 | Public output from `cdeotte/gpu-logistic-regression-stacker`; schema verified |
+| s6e6-22 | 2026-06-03 | pending | Public weighted submission blender | n/a | n/a | 0.97015 | Public output from `flexonafft/blender-is-all-you-need`; slightly below s6e6-21 |
 | sdss17_w025 | 2026-06-02 | pending | LightGBM seed 2024 + SDSS17 external weight 0.25 | 5 | 0.963139 | n/a | Not submitted; external-data OOF was materially weaker |
 
 ## Calibration Notes

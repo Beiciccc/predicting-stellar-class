@@ -12,7 +12,7 @@ MODEL_CONFIGS = [
     {"model": "lgbm", "seed": 2024, "n_estimators": 1200, "weight": 1.0},
 ]
 CLASS_BIAS = np.array([0.0, 0.535, 0.92])
-PUBLIC_STACKER_SLUG = "gpu-logistic-regression-stacker"
+PUBLIC_SUBMISSION_SLUGS = ["blender-is-all-you-need"]
 
 
 def add_features(df):
@@ -57,18 +57,19 @@ def find_data_dir():
     raise FileNotFoundError("Could not find train.csv and test.csv under /kaggle/input")
 
 
-def find_public_stacker_submission(sample_submission):
+def find_public_submission(sample_submission):
     input_root = Path("/kaggle/input")
-    for path in input_root.glob(f"**/{PUBLIC_STACKER_SLUG}/submission.csv"):
-        candidate = pd.read_csv(path)
-        if list(candidate.columns) == ["id", TARGET] and candidate["id"].equals(sample_submission["id"]):
-            return candidate
-    for path in input_root.glob("**/submission.csv"):
-        if PUBLIC_STACKER_SLUG not in str(path):
-            continue
-        candidate = pd.read_csv(path)
-        if list(candidate.columns) == ["id", TARGET] and candidate["id"].equals(sample_submission["id"]):
-            return candidate
+    for slug in PUBLIC_SUBMISSION_SLUGS:
+        for path in input_root.glob(f"**/{slug}/submission.csv"):
+            candidate = pd.read_csv(path)
+            if list(candidate.columns) == ["id", TARGET] and candidate["id"].equals(sample_submission["id"]):
+                return candidate
+        for path in input_root.glob("**/submission.csv"):
+            if slug not in str(path):
+                continue
+            candidate = pd.read_csv(path)
+            if list(candidate.columns) == ["id", TARGET] and candidate["id"].equals(sample_submission["id"]):
+                return candidate
     return None
 
 
@@ -77,7 +78,7 @@ train = pd.read_csv(DATA_DIR / "train.csv")
 test = pd.read_csv(DATA_DIR / "test.csv")
 sample_submission = pd.read_csv(DATA_DIR / "sample_submission.csv")
 
-public_submission = find_public_stacker_submission(sample_submission)
+public_submission = find_public_submission(sample_submission)
 if public_submission is not None:
     public_submission.to_csv("/kaggle/working/submission.csv", index=False)
     print(public_submission.head())
