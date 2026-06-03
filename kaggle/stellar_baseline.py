@@ -80,6 +80,8 @@ def find_public_submission(slug, sample_submission):
 
 def plurality_vote(labels, fallback):
     top_label, top_count = Counter(labels).most_common(1)[0]
+    if top_label == "QSO" and top_count < 3:
+        return fallback
     if top_count >= 2:
         return top_label
     return fallback

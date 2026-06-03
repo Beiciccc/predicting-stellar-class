@@ -81,6 +81,11 @@ def weighted_vote_with_weights(labels: dict[str, tuple[str, float]], fallback: s
     return fallback
 
 
+def vote_count(labels: list[str]) -> tuple[str, int]:
+    top_label, top_count = Counter(labels).most_common(1)[0]
+    return top_label, top_count
+
+
 def main() -> None:
     frames = read_submissions()
     ids = frames["lr"]["id"]
@@ -97,6 +102,10 @@ def main() -> None:
     weighted_core = []
     weighted_diverse_star = []
     star_safe = []
+    strict3 = []
+    qso_strict3 = []
+    qso_no_two_vote = []
+    star_tie_prefer = []
     realmlp_flex_nina = []
 
     for idx in range(len(lr)):
@@ -159,6 +168,27 @@ def main() -> None:
             star_safe.append(top_label)
         else:
             star_safe.append(base)
+        five_votes = [base, flex, nina, lgbm, ours]
+        plurality_label, plurality_count = vote_count(five_votes)
+        strict3.append(plurality_label if plurality_count >= 3 else base)
+        qso_strict3.append(
+            base if plurality_label == "QSO" and plurality_count < 3 else plurality_label
+        )
+        if plurality_label == "QSO" and plurality_count < 3:
+            without_qso = [label for label in five_votes if label != "QSO"]
+            fallback_label, fallback_count = vote_count(without_qso)
+            qso_no_two_vote.append(fallback_label if fallback_count >= 2 else base)
+        else:
+            qso_no_two_vote.append(plurality_label)
+        counts = Counter(five_votes)
+        max_count = max(counts.values())
+        tied = {label for label, count in counts.items() if count == max_count}
+        if "STAR" in tied and max_count >= 2:
+            star_tie_prefer.append("STAR")
+        elif plurality_count >= 2:
+            star_tie_prefer.append(plurality_label)
+        else:
+            star_tie_prefer.append(base)
 
     save("lr_anchor_flex_nina_lgbm_unanimous", ids, unanimous, lr)
     save("lr_anchor_flex_nina_majority", ids, flex_nina, lr)
@@ -172,6 +202,10 @@ def main() -> None:
     save("weighted_core_vote", ids, weighted_core, lr)
     save("weighted_diverse_star_vote", ids, weighted_diverse_star, lr)
     save("anchor_3of5_star_safe", ids, star_safe, lr)
+    save("strict3_lr_flex_nina_lgbm_ours", ids, strict3, lr)
+    save("qso_strict3_lr_flex_nina_lgbm_ours", ids, qso_strict3, lr)
+    save("qso_no_two_vote_lr_flex_nina_lgbm_ours", ids, qso_no_two_vote, lr)
+    save("star_tie_prefer_lr_flex_nina_lgbm_ours", ids, star_tie_prefer, lr)
 
 
 if __name__ == "__main__":
