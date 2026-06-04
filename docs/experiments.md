@@ -41,6 +41,7 @@
 | s6e6-35 | 2026-06-04 | pending | STAR-only LR bias followed by QSO strict vote | n/a | n/a | 0.97056 | Changed 47 rows versus s6e6-26; STAR-only re-vote matched QSO overlay and stayed below best |
 | s6e6-36 | 2026-06-04 | pending | Public unanimous patch: Fachri, Nina simple, Deeplearnerrr, and Flex | n/a | n/a | 0.97067 | Changed 37 rows versus s6e6-26; new best public score from high-agreement public patch |
 | s6e6-37 | 2026-06-04 | pending | s6e6-36 plus Fachri, Flex, and Nina subsystem unanimous patch | n/a | n/a | 0.97071 | Added 23 rows on top of s6e6-36; new best public score |
+| s6e6-38 | 2026-06-04 | pending | s6e6-37 plus Fachri, Nina simple, Deeplearnerrr, and calibrated LGBM unanimous patch | n/a | n/a | 0.97076 | Added 63 rows on top of s6e6-37; new best public score |
 | sdss17_w025 | 2026-06-02 | pending | LightGBM seed 2024 + SDSS17 external weight 0.25 | 5 | 0.963139 | n/a | Not submitted; external-data OOF was materially weaker |
 
 ## Calibration Notes
