@@ -12,7 +12,7 @@
   "kernel_sources": [
     "cdeotte/gpu-logistic-regression-stacker",
     "flexonafft/blender-is-all-you-need",
-    "nina2025/ps-s6e6-vote",
+    "nina2025/ps-s6e6-simple-voting-subsystem",
     "evgendvorkin/single-lightgbm-lb-0-96728",
     "fachri00/weighted-consensus-patch-0-97047",
     "nina2025/ps-s6e6-simple-vote",

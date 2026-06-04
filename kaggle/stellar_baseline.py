@@ -16,7 +16,7 @@ CLASS_BIAS = np.array([0.0, 0.53, 0.92])
 PUBLIC_SUBMISSION_SLUGS = {
     "lr": "gpu-logistic-regression-stacker",
     "flex": "blender-is-all-you-need",
-    "nina": "ps-s6e6-vote",
+    "nina": "ps-s6e6-simple-voting-subsystem",
     "lgbm_cal": "single-lightgbm-lb-0-96728",
     "fachri": "weighted-consensus-patch-0-97047",
     "nina_simple": "ps-s6e6-simple-vote",
