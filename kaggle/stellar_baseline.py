@@ -18,6 +18,9 @@ PUBLIC_SUBMISSION_SLUGS = {
     "flex": "blender-is-all-you-need",
     "nina": "ps-s6e6-vote",
     "lgbm_cal": "single-lightgbm-lb-0-96728",
+    "fachri": "weighted-consensus-patch-0-97047",
+    "nina_simple": "ps-s6e6-simple-vote",
+    "deeplearn": "attack-of-blenders-on-stellar",
 }
 
 
@@ -112,6 +115,16 @@ def make_public_vote_submission(sample_submission, model_submission):
             )
         )
     out[TARGET] = voted
+
+    patch_sources = ["fachri", "nina_simple", "deeplearn", "flex"]
+    if all(submissions[name] is not None for name in patch_sources):
+        patched = out[TARGET].copy()
+        for idx in range(len(patched)):
+            labels = [submissions[name][TARGET].iat[idx] for name in patch_sources]
+            if len(set(labels)) == 1 and labels[0] != patched.iat[idx]:
+                patched.iat[idx] = labels[0]
+        out[TARGET] = patched
+
     return out
 
 
