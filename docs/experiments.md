@@ -36,6 +36,7 @@
 | s6e6-30 | 2026-06-03 | pending | External 3-of-5 vote with STAR-safe and QSO-all rule | n/a | n/a | 0.97058 | Changed 714 rows versus s6e6-26; strong QSO suppression was too aggressive |
 | s6e6-31 | 2026-06-04 | pending | One-row QSO restore confirmed by RealMLP | n/a | n/a | 0.97065 | Changed one row versus s6e6-26; public score tied current best but did not improve |
 | s6e6-32 | 2026-06-04 | pending | RealMLP-added weighted vote with 0.75 margin | n/a | n/a | 0.97064 | Changed 18 rows versus s6e6-26; conservative weighted RealMLP patch slightly underperformed |
+| s6e6-33 | 2026-06-04 | pending | QSO-only LR bias followed by QSO strict vote | n/a | n/a | 0.97052 | Changed 28 rows versus s6e6-26; broad QSO suppression was too aggressive |
 | sdss17_w025 | 2026-06-02 | pending | LightGBM seed 2024 + SDSS17 external weight 0.25 | 5 | 0.963139 | n/a | Not submitted; external-data OOF was materially weaker |
 
 ## Calibration Notes
