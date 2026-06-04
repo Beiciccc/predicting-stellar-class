@@ -116,12 +116,22 @@ def make_public_vote_submission(sample_submission, model_submission):
         )
     out[TARGET] = voted
 
+    base_vote = out[TARGET].copy()
     patch_sources = ["fachri", "nina_simple", "deeplearn", "flex"]
     if all(submissions[name] is not None for name in patch_sources):
         patched = out[TARGET].copy()
         for idx in range(len(patched)):
             labels = [submissions[name][TARGET].iat[idx] for name in patch_sources]
             if len(set(labels)) == 1 and labels[0] != patched.iat[idx]:
+                patched.iat[idx] = labels[0]
+        out[TARGET] = patched
+
+    patch_sources = ["fachri", "flex", "nina"]
+    if all(submissions[name] is not None for name in patch_sources):
+        patched = out[TARGET].copy()
+        for idx in range(len(patched)):
+            labels = [submissions[name][TARGET].iat[idx] for name in patch_sources]
+            if len(set(labels)) == 1 and labels[0] != base_vote.iat[idx]:
                 patched.iat[idx] = labels[0]
         out[TARGET] = patched
 
