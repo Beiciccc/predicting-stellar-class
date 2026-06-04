@@ -16,6 +16,8 @@
     "evgendvorkin/single-lightgbm-lb-0-96728",
     "fachri00/weighted-consensus-patch-0-97047",
     "nina2025/ps-s6e6-simple-vote",
-    "deeplearnerrr/attack-of-blenders-on-stellar"
+    "deeplearnerrr/attack-of-blenders-on-stellar",
+    "ektarr/ensemble-and-tuning-predicting-stellar-class",
+    "stpeteishii/stellar-class-logistic-stacking"
   ]
 }

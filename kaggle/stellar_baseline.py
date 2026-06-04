@@ -21,6 +21,8 @@ PUBLIC_SUBMISSION_SLUGS = {
     "fachri": "weighted-consensus-patch-0-97047",
     "nina_simple": "ps-s6e6-simple-vote",
     "deeplearn": "attack-of-blenders-on-stellar",
+    "ektarr": "ensemble-and-tuning-predicting-stellar-class",
+    "stpete": "stellar-class-logistic-stacking",
 }
 
 
@@ -75,6 +77,10 @@ def find_public_submission(slug, sample_submission):
     for path in input_root.glob("**/submission.csv"):
         if slug not in str(path):
             continue
+        candidate = pd.read_csv(path)
+        if list(candidate.columns) == ["id", TARGET] and candidate["id"].equals(sample_submission["id"]):
+            return candidate
+    for path in input_root.glob(f"**/{slug}/*.csv"):
         candidate = pd.read_csv(path)
         if list(candidate.columns) == ["id", TARGET] and candidate["id"].equals(sample_submission["id"]):
             return candidate
@@ -136,6 +142,15 @@ def make_public_vote_submission(sample_submission, model_submission):
         out[TARGET] = patched
 
     patch_sources = ["fachri", "nina_simple", "deeplearn", "lgbm_cal"]
+    if all(submissions[name] is not None for name in patch_sources):
+        patched = out[TARGET].copy()
+        for idx in range(len(patched)):
+            labels = [submissions[name][TARGET].iat[idx] for name in patch_sources]
+            if len(set(labels)) == 1 and labels[0] != base_vote.iat[idx]:
+                patched.iat[idx] = labels[0]
+        out[TARGET] = patched
+
+    patch_sources = ["fachri", "nina_simple", "deeplearn", "ektarr", "stpete"]
     if all(submissions[name] is not None for name in patch_sources):
         patched = out[TARGET].copy()
         for idx in range(len(patched)):

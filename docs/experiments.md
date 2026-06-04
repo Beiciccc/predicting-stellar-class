@@ -43,6 +43,7 @@
 | s6e6-37 | 2026-06-04 | pending | s6e6-36 plus Fachri, Flex, and Nina subsystem unanimous patch | n/a | n/a | 0.97071 | Added 23 rows on top of s6e6-36; new best public score |
 | s6e6-38 | 2026-06-04 | pending | s6e6-37 plus Fachri, Nina simple, Deeplearnerrr, and calibrated LGBM unanimous patch | n/a | n/a | 0.97076 | Added 63 rows on top of s6e6-37; new best public score |
 | s6e6-39 | 2026-06-04 | pending | s6e6-38 plus six-source RealMLP vote patch | n/a | n/a | 0.97071 | Added 47 rows on top of s6e6-38; RealMLP vote expansion underperformed the s6e6-38 best |
+| s6e6-40 | 2026-06-04 | pending | s6e6-38 plus five-new-public-output unanimous patch | n/a | n/a | 0.97080 | Added 68 rows on top of s6e6-38; final submission of the cycle and new best public score |
 | sdss17_w025 | 2026-06-02 | pending | LightGBM seed 2024 + SDSS17 external weight 0.25 | 5 | 0.963139 | n/a | Not submitted; external-data OOF was materially weaker |
 
 ## Calibration Notes
