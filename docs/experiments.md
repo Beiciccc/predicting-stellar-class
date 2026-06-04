@@ -38,6 +38,7 @@
 | s6e6-32 | 2026-06-04 | pending | RealMLP-added weighted vote with 0.75 margin | n/a | n/a | 0.97064 | Changed 18 rows versus s6e6-26; conservative weighted RealMLP patch slightly underperformed |
 | s6e6-33 | 2026-06-04 | pending | QSO-only LR bias followed by QSO strict vote | n/a | n/a | 0.97052 | Changed 28 rows versus s6e6-26; broad QSO suppression was too aggressive |
 | s6e6-34 | 2026-06-04 | pending | QSO-only LR bias overlay on LR-matching rows | n/a | n/a | 0.97056 | Changed 42 rows versus s6e6-26; smaller QSO overlay still underperformed |
+| s6e6-35 | 2026-06-04 | pending | STAR-only LR bias followed by QSO strict vote | n/a | n/a | 0.97056 | Changed 47 rows versus s6e6-26; STAR-only re-vote matched QSO overlay and stayed below best |
 | sdss17_w025 | 2026-06-02 | pending | LightGBM seed 2024 + SDSS17 external weight 0.25 | 5 | 0.963139 | n/a | Not submitted; external-data OOF was materially weaker |
 
 ## Calibration Notes
