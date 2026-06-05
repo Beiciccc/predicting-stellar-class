@@ -115,7 +115,7 @@ def lr3_margin_patches(frames: dict[str, pd.DataFrame]) -> None:
         .loc[lr_label.ne(best[TARGET].to_numpy())]
         .sort_values("margin", ascending=False)
     )
-    for n in [5, 10, 20, 50, 100, 200]:
+    for n in [5, 10, 15, 20, 50, 100, 200]:
         patched = best[TARGET].copy()
         top = rows.head(n).set_index("id")["lr_label"]
         mask = best["id"].isin(top.index)
