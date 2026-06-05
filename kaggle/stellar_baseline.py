@@ -87,6 +87,18 @@ def find_public_submission(slug, sample_submission):
     return None
 
 
+def find_public_array(slug, filename):
+    input_root = Path("/kaggle/input")
+    for path in input_root.glob(f"**/{slug}/{filename}"):
+        return np.load(path)
+    for path in input_root.glob(f"**/{slug}/**/{filename}"):
+        return np.load(path)
+    for path in input_root.glob(f"**/{filename}"):
+        if slug in str(path):
+            return np.load(path)
+    return None
+
+
 def plurality_vote(labels, fallback):
     top_label, top_count = Counter(labels).most_common(1)[0]
     if top_label == "QSO" and top_count < 3:
@@ -158,6 +170,26 @@ def make_public_vote_submission(sample_submission, model_submission):
             if len(set(labels)) == 1 and labels[0] != base_vote.iat[idx]:
                 patched.iat[idx] = labels[0]
         out[TARGET] = patched
+
+    lr_pred = find_public_array(PUBLIC_SUBMISSION_SLUGS["lr"], "pred_lr_stacker_v3.npy")
+    if lr_pred is not None and lr_pred.shape == (len(out), len(CLASSES)):
+        lr_idx = lr_pred.argmax(axis=1)
+        current_idx = out[TARGET].map({label: idx for idx, label in enumerate(CLASSES)}).to_numpy()
+        lr_labels = np.array(CLASSES)[lr_idx]
+        margin = lr_pred[np.arange(len(out)), lr_idx] - lr_pred[np.arange(len(out)), current_idx]
+        candidates = pd.DataFrame(
+            {
+                "row": np.arange(len(out)),
+                "label": lr_labels,
+                "margin": margin,
+                "current": out[TARGET].to_numpy(),
+            }
+        )
+        candidates = candidates[candidates["label"] != candidates["current"]].sort_values(
+            "margin", ascending=False
+        )
+        for row, label in candidates.head(10)[["row", "label"]].itertuples(index=False):
+            out.at[row, TARGET] = label
 
     return out
 
