@@ -4,12 +4,14 @@ from __future__ import annotations
 from collections import Counter
 from pathlib import Path
 
+import numpy as np
 import pandas as pd
 
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT_DIR = ROOT / "outputs" / "jun05"
 TARGET = "class"
+CLASSES = ["GALAXY", "QSO", "STAR"]
 
 FILES = {
     "best": ROOT / "outputs/jun04_adaptive3/s38_plus_new5.csv",
@@ -100,6 +102,27 @@ def min_vote_label_patch(
     save(name, frames["best"]["id"], patched, best)
 
 
+def lr3_margin_patches(frames: dict[str, pd.DataFrame]) -> None:
+    best = frames["best"]
+    pred = np.load(ROOT / "references/kaggle_outputs/cdeotte_gpu_lr_stacker_latest/pred_lr_stacker_v3.npy")
+    label_to_idx = {label: idx for idx, label in enumerate(CLASSES)}
+    lr_idx = pred.argmax(axis=1)
+    lr_label = pd.Series([CLASSES[idx] for idx in lr_idx])
+    best_idx = best[TARGET].map(label_to_idx).to_numpy()
+    margin = pred[np.arange(len(pred)), lr_idx] - pred[np.arange(len(pred)), best_idx]
+    rows = (
+        pd.DataFrame({"id": best["id"], "lr_label": lr_label, "margin": margin})
+        .loc[lr_label.ne(best[TARGET].to_numpy())]
+        .sort_values("margin", ascending=False)
+    )
+    for n in [5, 10, 20, 50, 100, 200]:
+        patched = best[TARGET].copy()
+        top = rows.head(n).set_index("id")["lr_label"]
+        mask = best["id"].isin(top.index)
+        patched.loc[mask] = best.loc[mask, "id"].map(top)
+        save(f"s40_lr3_top{n}_margin_patch", best["id"], patched, best[TARGET])
+
+
 def main() -> None:
     frames = read_frames()
     core13 = [
@@ -132,6 +155,7 @@ def main() -> None:
     min_vote_label_patch(frames, patch8, 6, "GALAXY", "s40_patch8_6of8_gal")
     min_vote_label_patch(frames, public15, 11, "GALAXY", "s40_public15_11of15_gal")
     min_vote_patch(frames, new7, 6, "s40_new7_6of7")
+    lr3_margin_patches(frames)
 
     unanimous_patch(frames, ["lr_v3", "tuan60", "lgbm_old"], "s40_lr3_tuan60_lgbmold_unanimous")
     unanimous_patch(
