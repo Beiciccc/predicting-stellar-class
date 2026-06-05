@@ -51,6 +51,7 @@
 | s6e6-45 | 2026-06-05 | pending | s6e6-40 plus LR v3, Tuannm alpha 0.60, and calibrated LGBM unanimous patch | n/a | n/a | 0.97078 | Changed 16 rows versus s6e6-40; small mixed three-source patch underperformed |
 | s6e6-46 | 2026-06-05 | pending | s6e6-40 plus LR v3 top-5 margin patch | n/a | n/a | 0.97080 | Changed 5 rows versus s6e6-40; public score tied current best |
 | s6e6-47 | 2026-06-05 | pending | s6e6-40 plus LR v3 top-10 margin patch | n/a | n/a | 0.97085 | Changed 10 rows versus s6e6-40; new best public score |
+| s6e6-48 | 2026-06-05 | pending | s6e6-40 plus LR v3 top-20 margin patch | n/a | n/a | 0.97085 | Changed 20 rows versus s6e6-40; public score tied s6e6-47 best |
 | sdss17_w025 | 2026-06-02 | pending | LightGBM seed 2024 + SDSS17 external weight 0.25 | 5 | 0.963139 | n/a | Not submitted; external-data OOF was materially weaker |
 
 ## Calibration Notes
