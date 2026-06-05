@@ -46,6 +46,7 @@
 | s6e6-40 | 2026-06-04 | pending | s6e6-38 plus five-new-public-output unanimous patch | n/a | n/a | 0.97080 | Added 68 rows on top of s6e6-38; final submission of the cycle and new best public score |
 | s6e6-41 | 2026-06-05 | pending | s6e6-40 plus core13 10-of-13 GALAXY-only patch | n/a | n/a | 0.97080 | Changed 4 rows versus s6e6-40; public score tied current best |
 | s6e6-42 | 2026-06-05 | pending | s6e6-40 plus public12 9-of-12 GALAXY-only patch | n/a | n/a | 0.97080 | Changed 5 rows versus s6e6-40; public score tied current best |
+| s6e6-43 | 2026-06-05 | pending | s6e6-40 plus core13 9-of-13 GALAXY-only patch | n/a | n/a | 0.97078 | Changed 31 rows versus s6e6-40; wider GALAXY-only patch underperformed |
 | sdss17_w025 | 2026-06-02 | pending | LightGBM seed 2024 + SDSS17 external weight 0.25 | 5 | 0.963139 | n/a | Not submitted; external-data OOF was materially weaker |
 
 ## Calibration Notes
