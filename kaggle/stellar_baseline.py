@@ -228,7 +228,7 @@ def apply_lr7_adolf_agreement_patch(submission):
     candidates = candidates[candidates["agree"]].sort_values("margin", ascending=False)
 
     out = submission.copy()
-    for row, label in candidates.head(5)[["row", "label"]].itertuples(index=False):
+    for row, label in candidates.head(20)[["row", "label"]].itertuples(index=False):
         out.at[row, TARGET] = label
     return out
 
