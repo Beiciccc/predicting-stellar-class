@@ -24,6 +24,7 @@ FILES = {
     "flex_consensus": ROOT / "references/kaggle_outputs/jun06_flex_blender/submission_consensus.csv",
     "flex_democratic": ROOT / "references/kaggle_outputs/jun06_flex_blender/submission_democratic.csv",
     "nybbler": ROOT / "references/kaggle_outputs/jun06_nybbler_key_stack/submission.csv",
+    "adolf_fw_lgb": ROOT / "references/kaggle_outputs/jun06_adolf_fw_lgb/submission.csv",
     "kirill_tabm": ROOT / "references/kaggle_outputs/jun06_kirill_tabm_ovr/submission.csv",
     "kirill_xgb": ROOT / "references/kaggle_outputs/jun06_kirill_xgb_ovr/submission.csv",
     "torres": ROOT / "references/kaggle_outputs/jun06_torres_stacking/submission_ensemble1.csv",
@@ -39,6 +40,7 @@ FILES = {
 SUPPORT_KEYS = [
     "flex_anchor",
     "nybbler",
+    "adolf_fw_lgb",
     "kirill_tabm",
     "kirill_xgb",
     "torres",
@@ -122,6 +124,45 @@ def patch_by_ids(anchor: pd.DataFrame, rows: pd.DataFrame, name: str) -> None:
     save(name, anchor["id"], patched, anchor[TARGET])
 
 
+def adolf_lr7_agreement_patches(frames: dict[str, pd.DataFrame]) -> None:
+    if "adolf_fw_lgb" not in frames:
+        return
+    anchor = frames["flex_anchor"]
+    label_to_idx = {label: idx for idx, label in enumerate(CLASSES)}
+    lr7 = frames["lr_v7"][TARGET]
+    adolf = frames["adolf_fw_lgb"][TARGET]
+    agree = lr7.eq(adolf) & lr7.ne(anchor[TARGET])
+
+    lr_pred = np.load(ROOT / "references/kaggle_outputs/jun06_cdeotte_lr_latest/pred_lr_stacker_v7.npy")
+    adolf_pred = np.load(ROOT / "references/kaggle_outputs/jun06_adolf_fw_lgb/pred_fw_lgb_stacker_v6.npy")
+    pred_idx = lr7.map(label_to_idx).to_numpy()
+    anchor_idx = anchor[TARGET].map(label_to_idx).to_numpy()
+    lr_margin = lr_pred[np.arange(len(anchor)), pred_idx] - lr_pred[np.arange(len(anchor)), anchor_idx]
+    adolf_margin = adolf_pred[np.arange(len(anchor)), pred_idx] - adolf_pred[np.arange(len(anchor)), anchor_idx]
+
+    rows = pd.DataFrame(
+        {
+            "id": anchor["id"],
+            "anchor": anchor[TARGET],
+            "pred": lr7,
+            "lr_margin": lr_margin,
+            "adolf_margin": adolf_margin,
+        }
+    ).loc[agree]
+    rows["margin"] = rows[["lr_margin", "adolf_margin"]].min(axis=1)
+    rows["transition"] = rows["anchor"] + "->" + rows["pred"]
+    rows = rows.sort_values("margin", ascending=False).reset_index(drop=True)
+    rows["rank"] = np.arange(1, len(rows) + 1)
+
+    for n in [5, 10, 20, 50]:
+        patch_by_ids(anchor, rows[rows["rank"].le(n)], f"jun06_flex_anchor_lr7_adolf_agree_top{n}")
+    patch_by_ids(
+        anchor,
+        rows[rows["rank"].le(50) & rows["transition"].isin(["GALAXY->STAR", "QSO->STAR"])],
+        "jun06_flex_anchor_lr7_adolf_agree_top50_star_target",
+    )
+
+
 def copy_source(frames: dict[str, pd.DataFrame], source: str, name: str, anchor: str = "s47") -> None:
     save(name, frames[source]["id"], frames[source][TARGET].copy(), frames[anchor][TARGET])
 
@@ -136,6 +177,8 @@ def main() -> None:
     copy_source(frames, "flex_consensus", "jun06_flex_consensus")
     copy_source(frames, "flex_democratic", "jun06_flex_democratic")
     copy_source(frames, "nybbler", "jun06_nybbler_key_stack")
+    if "adolf_fw_lgb" in frames:
+        copy_source(frames, "adolf_fw_lgb", "jun06_adolf_fw_lgb")
 
     lr3_rows = add_support(
         margin_rows(frames["s40"], ROOT / "references/kaggle_outputs/cdeotte_gpu_lr_stacker_latest/pred_lr_stacker_v3.npy"),
@@ -199,6 +242,7 @@ def main() -> None:
         flex_rows[flex_rows["rank"].le(50) & flex_rows["support_pred"].ge(7)],
         "jun06_flex_anchor_lr7_top50_support_ge7",
     )
+    adolf_lr7_agreement_patches(frames)
 
 
 if __name__ == "__main__":
