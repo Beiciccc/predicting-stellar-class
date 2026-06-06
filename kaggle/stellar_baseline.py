@@ -290,9 +290,9 @@ train = pd.read_csv(DATA_DIR / "train.csv")
 test = pd.read_csv(DATA_DIR / "test.csv")
 sample_submission = pd.read_csv(DATA_DIR / "sample_submission.csv")
 
-model_submission = make_model_submission(train, test, sample_submission)
 submission = find_public_submission(PUBLIC_SUBMISSION_SLUGS["flex"], sample_submission)
 if submission is None:
+    model_submission = make_model_submission(train, test, sample_submission)
     submission = make_public_vote_submission(sample_submission, model_submission)
     if submission is None:
         submission = model_submission
