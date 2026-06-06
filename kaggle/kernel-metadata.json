@@ -18,6 +18,7 @@
     "nina2025/ps-s6e6-simple-vote",
     "deeplearnerrr/attack-of-blenders-on-stellar",
     "ektarr/ensemble-and-tuning-predicting-stellar-class",
-    "stpeteishii/stellar-class-logistic-stacking"
+    "stpeteishii/stellar-class-logistic-stacking",
+    "adolffaustine/the-feature-weighted-lightgbm-meta-stacker-script"
   ]
 }

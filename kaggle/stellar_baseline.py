@@ -23,6 +23,7 @@ PUBLIC_SUBMISSION_SLUGS = {
     "deeplearn": "attack-of-blenders-on-stellar",
     "ektarr": "ensemble-and-tuning-predicting-stellar-class",
     "stpete": "stellar-class-logistic-stacking",
+    "adolf_fw_lgb": "the-feature-weighted-lightgbm-meta-stacker-script",
 }
 
 
@@ -194,6 +195,44 @@ def make_public_vote_submission(sample_submission, model_submission):
     return out
 
 
+def apply_lr7_adolf_agreement_patch(submission):
+    lr_pred = find_public_array(PUBLIC_SUBMISSION_SLUGS["lr"], "pred_lr_stacker_v7.npy")
+    adolf_pred = find_public_array(PUBLIC_SUBMISSION_SLUGS["adolf_fw_lgb"], "pred_fw_lgb_stacker_v6.npy")
+    if lr_pred is None or adolf_pred is None:
+        return submission
+    if lr_pred.shape != (len(submission), len(CLASSES)):
+        return submission
+    if adolf_pred.shape != (len(submission), len(CLASSES)):
+        return submission
+
+    label_to_idx = {label: idx for idx, label in enumerate(CLASSES)}
+    current_idx = submission[TARGET].map(label_to_idx).to_numpy()
+    lr_idx = lr_pred.argmax(axis=1)
+    adolf_idx = adolf_pred.argmax(axis=1)
+    agree = (lr_idx == adolf_idx) & (lr_idx != current_idx)
+    if not agree.any():
+        return submission
+
+    lr_margin = lr_pred[np.arange(len(submission)), lr_idx] - lr_pred[np.arange(len(submission)), current_idx]
+    adolf_margin = adolf_pred[np.arange(len(submission)), adolf_idx] - adolf_pred[
+        np.arange(len(submission)), current_idx
+    ]
+    candidates = pd.DataFrame(
+        {
+            "row": np.arange(len(submission)),
+            "label": np.array(CLASSES)[lr_idx],
+            "margin": np.minimum(lr_margin, adolf_margin),
+            "agree": agree,
+        }
+    )
+    candidates = candidates[candidates["agree"]].sort_values("margin", ascending=False)
+
+    out = submission.copy()
+    for row, label in candidates.head(5)[["row", "label"]].itertuples(index=False):
+        out.at[row, TARGET] = label
+    return out
+
+
 def make_model_submission(train, test, sample_submission):
     train_x, test_x = make_matrix(train, test)
     y = train[TARGET].map({label: idx for idx, label in enumerate(CLASSES)}).to_numpy()
@@ -257,6 +296,7 @@ if submission is None:
     submission = make_public_vote_submission(sample_submission, model_submission)
     if submission is None:
         submission = model_submission
+submission = apply_lr7_adolf_agreement_patch(submission)
 
 submission.to_csv("/kaggle/working/submission.csv", index=False)
 print(submission.head())

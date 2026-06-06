@@ -56,6 +56,7 @@
 | s6e6-50 | 2026-06-05 | pending | s6e6-40 plus LR v3 top-15 margin patch | n/a | n/a | 0.97084 | Changed 15 rows versus s6e6-40; middle cutoff underperformed top-10/top-20 |
 | s6e6-51 | 2026-06-06 | pending | Flex public anchor | n/a | n/a | 0.97092 | Changed 879 rows versus s6e6-47; new best public score from latest Flex anchor output |
 | s6e6-52 | 2026-06-06 | pending | CDeotte LR stacker v7 direct output | n/a | 0.970169 | 0.97076 | Direct v7 output underperformed Flex anchor, so v7 is useful only as a selective support signal |
+| s6e6-53 | 2026-06-06 | pending | Flex anchor plus LR7/Adolf agreement top-5 patch | n/a | n/a | 0.97093 | Changed 5 rows versus s6e6-51; new best public score from two-stacker high-margin agreement |
 | sdss17_w025 | 2026-06-02 | pending | LightGBM seed 2024 + SDSS17 external weight 0.25 | 5 | 0.963139 | n/a | Not submitted; external-data OOF was materially weaker |
 
 ## Calibration Notes
