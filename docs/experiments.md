@@ -60,6 +60,7 @@
 | s6e6-54 | 2026-06-06 | pending | Flex anchor plus LR7/Adolf agreement top-10 patch | n/a | n/a | 0.97093 | Changed 10 rows versus s6e6-51; public score tied s6e6-53 best |
 | s6e6-55 | 2026-06-06 | pending | Flex anchor plus LR7/Adolf agreement top-20 patch | n/a | n/a | 0.97101 | Changed 20 rows versus s6e6-51; new best public score, confirming the agreement patch scales past top-10 |
 | s6e6-56 | 2026-06-06 | pending | Flex anchor plus LR7/Adolf agreement top-30 patch | n/a | n/a | 0.97105 | Changed 30 rows versus s6e6-51; new best public score with continued gains from the agreement cutoff |
+| s6e6-57 | 2026-06-06 | pending | Flex anchor plus LR7/Adolf agreement top-40 patch | n/a | n/a | 0.97103 | Changed 40 rows versus s6e6-51; below top30, so rows 31-40 were net negative |
 | sdss17_w025 | 2026-06-02 | pending | LightGBM seed 2024 + SDSS17 external weight 0.25 | 5 | 0.963139 | n/a | Not submitted; external-data OOF was materially weaker |
 
 ## Calibration Notes

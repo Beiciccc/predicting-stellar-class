@@ -154,7 +154,7 @@ def adolf_lr7_agreement_patches(frames: dict[str, pd.DataFrame]) -> None:
     rows = rows.sort_values("margin", ascending=False).reset_index(drop=True)
     rows["rank"] = np.arange(1, len(rows) + 1)
 
-    for n in [5, 10, 20, 30, 40, 50]:
+    for n in [5, 10, 20, 25, 30, 35, 40, 50]:
         patch_by_ids(anchor, rows[rows["rank"].le(n)], f"jun06_flex_anchor_lr7_adolf_agree_top{n}")
     patch_by_ids(
         anchor,
