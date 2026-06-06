@@ -54,6 +54,7 @@
 | s6e6-48 | 2026-06-05 | pending | s6e6-40 plus LR v3 top-20 margin patch | n/a | n/a | 0.97085 | Changed 20 rows versus s6e6-40; public score tied s6e6-47 best |
 | s6e6-49 | 2026-06-05 | pending | s6e6-40 plus LR v3 top-50 margin patch | n/a | n/a | 0.97084 | Changed 50 rows versus s6e6-40; wider LR v3 margin patch slightly underperformed |
 | s6e6-50 | 2026-06-05 | pending | s6e6-40 plus LR v3 top-15 margin patch | n/a | n/a | 0.97084 | Changed 15 rows versus s6e6-40; middle cutoff underperformed top-10/top-20 |
+| s6e6-51 | 2026-06-06 | pending | Flex public anchor | n/a | n/a | 0.97092 | Changed 879 rows versus s6e6-47; new best public score from latest Flex anchor output |
 | sdss17_w025 | 2026-06-02 | pending | LightGBM seed 2024 + SDSS17 external weight 0.25 | 5 | 0.963139 | n/a | Not submitted; external-data OOF was materially weaker |
 
 ## Calibration Notes

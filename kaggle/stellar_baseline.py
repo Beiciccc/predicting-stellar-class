@@ -252,9 +252,11 @@ test = pd.read_csv(DATA_DIR / "test.csv")
 sample_submission = pd.read_csv(DATA_DIR / "sample_submission.csv")
 
 model_submission = make_model_submission(train, test, sample_submission)
-submission = make_public_vote_submission(sample_submission, model_submission)
+submission = find_public_submission(PUBLIC_SUBMISSION_SLUGS["flex"], sample_submission)
 if submission is None:
-    submission = model_submission
+    submission = make_public_vote_submission(sample_submission, model_submission)
+    if submission is None:
+        submission = model_submission
 
 submission.to_csv("/kaggle/working/submission.csv", index=False)
 print(submission.head())
