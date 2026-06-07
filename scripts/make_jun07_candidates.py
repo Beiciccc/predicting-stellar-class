@@ -25,6 +25,7 @@ FILES = {
     "kaisei_oof": ROOT / "references/kaggle_outputs/jun07_kaisei_oof_stacker/submission.csv",
     "amry_oof": ROOT / "references/kaggle_outputs/jun07_amry_oof_stacker_97106/submission.csv",
 }
+AMRY_CANDIDATES = ROOT / "references/kaggle_outputs/jun07_amry_meta_patch_97108/gpu_patch_candidates.csv"
 
 
 def read_frames() -> dict[str, pd.DataFrame]:
@@ -53,6 +54,34 @@ def save(name: str, frame: pd.DataFrame, anchor: pd.DataFrame) -> None:
     )
 
 
+def make_amry_candidate_patches(frames: dict[str, pd.DataFrame]) -> None:
+    if "nina_vote2" not in frames or not AMRY_CANDIDATES.exists():
+        return
+    base = frames["nina_vote2"]
+    best = frames["best_top25"]
+    candidates = pd.read_csv(AMRY_CANDIDATES)
+    candidates = candidates[~candidates["already_tried"].astype(bool)].copy()
+    candidates = candidates.sort_values("score", ascending=False).reset_index(drop=True)
+    candidates["transition"] = candidates["anchor_class"] + "->" + candidates["gpu_meta_class"]
+
+    for n in [20, 30, 50]:
+        patched = base.copy()
+        rows = candidates.head(n)
+        mapping = rows.set_index("id")["gpu_meta_class"]
+        mask = patched["id"].isin(mapping.index)
+        patched.loc[mask, TARGET] = patched.loc[mask, "id"].map(mapping)
+        save(f"jun07_amry_custom_top{n}", patched, best)
+
+    star_rows = candidates[candidates["transition"].isin(["GALAXY->STAR", "QSO->STAR"])]
+    for n in [20, 30, 50]:
+        patched = base.copy()
+        rows = star_rows.head(n)
+        mapping = rows.set_index("id")["gpu_meta_class"]
+        mask = patched["id"].isin(mapping.index)
+        patched.loc[mask, TARGET] = patched.loc[mask, "id"].map(mapping)
+        save(f"jun07_amry_custom_star_target_top{n}", patched, best)
+
+
 def main() -> None:
     frames = read_frames()
     anchor = frames["best_top25"]
@@ -72,6 +101,7 @@ def main() -> None:
     ]:
         if name in frames:
             save(f"jun07_{name}", frames[name], anchor)
+    make_amry_candidate_patches(frames)
 
 
 if __name__ == "__main__":
