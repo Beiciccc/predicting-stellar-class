@@ -64,7 +64,7 @@ def make_amry_candidate_patches(frames: dict[str, pd.DataFrame]) -> None:
     candidates = candidates.sort_values("score", ascending=False).reset_index(drop=True)
     candidates["transition"] = candidates["anchor_class"] + "->" + candidates["gpu_meta_class"]
 
-    for n in [20, 30, 50]:
+    for n in [6, 7, 20, 30, 50]:
         patched = base.copy()
         rows = candidates.head(n)
         mapping = rows.set_index("id")["gpu_meta_class"]
