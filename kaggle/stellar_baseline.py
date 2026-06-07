@@ -20,6 +20,7 @@ PUBLIC_SUBMISSION_SLUGS = {
     "lgbm_cal": "single-lightgbm-lb-0-96728",
     "fachri": "weighted-consensus-patch-0-97047",
     "nina_simple": "ps-s6e6-simple-vote",
+    "nina_vote2": "ps-s6e6-simple-vote-2",
     "deeplearn": "attack-of-blenders-on-stellar",
     "ektarr": "ensemble-and-tuning-predicting-stellar-class",
     "stpete": "stellar-class-logistic-stacking",
@@ -290,13 +291,15 @@ train = pd.read_csv(DATA_DIR / "train.csv")
 test = pd.read_csv(DATA_DIR / "test.csv")
 sample_submission = pd.read_csv(DATA_DIR / "sample_submission.csv")
 
-submission = find_public_submission(PUBLIC_SUBMISSION_SLUGS["flex"], sample_submission)
+submission = find_public_submission(PUBLIC_SUBMISSION_SLUGS["nina_vote2"], sample_submission)
 if submission is None:
-    model_submission = make_model_submission(train, test, sample_submission)
-    submission = make_public_vote_submission(sample_submission, model_submission)
+    submission = find_public_submission(PUBLIC_SUBMISSION_SLUGS["flex"], sample_submission)
     if submission is None:
-        submission = model_submission
-submission = apply_lr7_adolf_agreement_patch(submission)
+        model_submission = make_model_submission(train, test, sample_submission)
+        submission = make_public_vote_submission(sample_submission, model_submission)
+        if submission is None:
+            submission = model_submission
+    submission = apply_lr7_adolf_agreement_patch(submission)
 
 submission.to_csv("/kaggle/working/submission.csv", index=False)
 print(submission.head())
