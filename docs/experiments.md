@@ -69,6 +69,7 @@
 | s6e6-63 | 2026-06-07 | pending | Nina vote.2 plus Amry GPU-meta top-2 patch | n/a | n/a | 0.97108 | Changed 2 rows versus s6e6-61; public score tied current best |
 | s6e6-64 | 2026-06-07 | pending | Nina vote.2 plus Amry GPU-meta top-3 patch | n/a | n/a | 0.97108 | Changed 3 rows versus s6e6-61; public score tied current best |
 | s6e6-65 | 2026-06-07 | pending | Nina vote.2 plus Amry GPU-meta top-5 patch | n/a | n/a | 0.97108 | Changed 5 rows versus s6e6-61; public score tied current best |
+| s6e6-66 | 2026-06-07 | pending | Nina vote.2 plus Amry GPU-meta top-8 patch | n/a | n/a | 0.97109 | Changed 8 rows versus s6e6-61; new best public score |
 | sdss17_w025 | 2026-06-02 | pending | LightGBM seed 2024 + SDSS17 external weight 0.25 | 5 | 0.963139 | n/a | Not submitted; external-data OOF was materially weaker |
 
 ## Calibration Notes

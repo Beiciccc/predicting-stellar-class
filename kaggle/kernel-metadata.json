@@ -19,6 +19,7 @@
     "deeplearnerrr/attack-of-blenders-on-stellar",
     "ektarr/ensemble-and-tuning-predicting-stellar-class",
     "stpeteishii/stellar-class-logistic-stacking",
-    "adolffaustine/the-feature-weighted-lightgbm-meta-stacker-script"
+    "adolffaustine/the-feature-weighted-lightgbm-meta-stacker-script",
+    "amryasswe/s6e6-gpu-meta-patch-lab-0-97108"
   ]
 }

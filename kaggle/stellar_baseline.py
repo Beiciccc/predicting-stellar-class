@@ -25,6 +25,7 @@ PUBLIC_SUBMISSION_SLUGS = {
     "ektarr": "ensemble-and-tuning-predicting-stellar-class",
     "stpete": "stellar-class-logistic-stacking",
     "adolf_fw_lgb": "the-feature-weighted-lightgbm-meta-stacker-script",
+    "amry_meta": "s6e6-gpu-meta-patch-lab-0-97108",
 }
 
 
@@ -83,6 +84,25 @@ def find_public_submission(slug, sample_submission):
         if list(candidate.columns) == ["id", TARGET] and candidate["id"].equals(sample_submission["id"]):
             return candidate
     for path in input_root.glob(f"**/{slug}/*.csv"):
+        candidate = pd.read_csv(path)
+        if list(candidate.columns) == ["id", TARGET] and candidate["id"].equals(sample_submission["id"]):
+            return candidate
+    return None
+
+
+def find_public_submission_file(slug, filename, sample_submission):
+    input_root = Path("/kaggle/input")
+    for path in input_root.glob(f"**/{slug}/{filename}"):
+        candidate = pd.read_csv(path)
+        if list(candidate.columns) == ["id", TARGET] and candidate["id"].equals(sample_submission["id"]):
+            return candidate
+    for path in input_root.glob(f"**/{slug}/**/{filename}"):
+        candidate = pd.read_csv(path)
+        if list(candidate.columns) == ["id", TARGET] and candidate["id"].equals(sample_submission["id"]):
+            return candidate
+    for path in input_root.glob(f"**/{filename}"):
+        if slug not in str(path):
+            continue
         candidate = pd.read_csv(path)
         if list(candidate.columns) == ["id", TARGET] and candidate["id"].equals(sample_submission["id"]):
             return candidate
@@ -291,7 +311,13 @@ train = pd.read_csv(DATA_DIR / "train.csv")
 test = pd.read_csv(DATA_DIR / "test.csv")
 sample_submission = pd.read_csv(DATA_DIR / "sample_submission.csv")
 
-submission = find_public_submission(PUBLIC_SUBMISSION_SLUGS["nina_vote2"], sample_submission)
+submission = find_public_submission_file(
+    PUBLIC_SUBMISSION_SLUGS["amry_meta"],
+    "submission_gpu_meta_top8_patch.csv",
+    sample_submission,
+)
+if submission is None:
+    submission = find_public_submission(PUBLIC_SUBMISSION_SLUGS["nina_vote2"], sample_submission)
 if submission is None:
     submission = find_public_submission(PUBLIC_SUBMISSION_SLUGS["flex"], sample_submission)
     if submission is None:
