@@ -26,6 +26,7 @@ PUBLIC_SUBMISSION_SLUGS = {
     "stpete": "stellar-class-logistic-stacking",
     "adolf_fw_lgb": "the-feature-weighted-lightgbm-meta-stacker-script",
     "amry_meta": "s6e6-gpu-meta-patch-lab-0-97108",
+    "nina_ps_s6e6": "ps-s6e6",
 }
 
 
@@ -312,10 +313,16 @@ test = pd.read_csv(DATA_DIR / "test.csv")
 sample_submission = pd.read_csv(DATA_DIR / "sample_submission.csv")
 
 submission = find_public_submission_file(
-    PUBLIC_SUBMISSION_SLUGS["amry_meta"],
-    "submission_gpu_meta_top8_patch.csv",
+    PUBLIC_SUBMISSION_SLUGS["nina_ps_s6e6"],
+    "0.97122.csv",
     sample_submission,
 )
+if submission is None:
+    submission = find_public_submission_file(
+        PUBLIC_SUBMISSION_SLUGS["amry_meta"],
+        "submission_gpu_meta_top8_patch.csv",
+        sample_submission,
+    )
 if submission is None:
     submission = find_public_submission(PUBLIC_SUBMISSION_SLUGS["nina_vote2"], sample_submission)
 if submission is None:

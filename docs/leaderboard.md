@@ -1,15 +1,16 @@
 # Leaderboard Notes
 
-Snapshot: 2026-06-01
+Snapshot: 2026-06-08 13:39 UTC
 
 | rank | team | public score |
 | ---: | --- | ---: |
-| 1 | OzanM. | 0.96921 |
-| 2 | F.A.Nina | 0.96804 |
-| 3 | Kyr1ll | 0.96798 |
-| 4 | Vladimir Demidov | 0.96771 |
-| 5 | NatSwamin | 0.96766 |
+| 1 | nybbler | 0.97144 |
+| 2 | Optimistix | 0.97142 |
+| 3 | OzanM. | 0.97139 |
+| 4 | Sung Heo | 0.97132 |
+| 5 | Chris Deotte | 0.97131 |
+| 6 | Timme | 0.97130 |
+| 7 | f.a.nina | 0.97126 |
 
-Early public Code directions include RealMLP, CatBoost, XGBoost, LightGBM,
-GBDT blends, artifact blends, and adversarial validation.
-
+Recent public directions include logistic stackers, RealMLP, CatBoost,
+XGBoost, LightGBM, artifact blends, and small high-confidence label patches.

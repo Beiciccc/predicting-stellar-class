@@ -8,12 +8,11 @@
   "enable_gpu": false,
   "enable_internet": false,
   "competition_sources": ["playground-series-s6e6"],
-  "dataset_sources": [],
+  "dataset_sources": ["nina2025/ps-s6e6"],
   "kernel_sources": [
     "cdeotte/gpu-logistic-regression-stacker",
     "flexonafft/blender-is-all-you-need",
     "fachri00/weighted-consensus-patch-0-97047",
-    "nina2025/ps-s6e6-simple-vote-2",
     "deeplearnerrr/attack-of-blenders-on-stellar",
     "ektarr/ensemble-and-tuning-predicting-stellar-class",
     "stpeteishii/stellar-class-logistic-stacking",
