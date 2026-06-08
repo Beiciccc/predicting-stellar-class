@@ -66,6 +66,12 @@ def public_score(row: dict[str, str]) -> str:
     return ""
 
 
+def submission_ref(row: dict[str, str] | None) -> str:
+    if not row:
+        return ""
+    return (row.get("ref") or row.get("id") or row.get("submissionId") or "").strip()
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("submission", type=Path)
@@ -83,7 +89,10 @@ def main() -> None:
     before_table = submissions_table(args.competition)
     before_rows = submissions_csv(args.competition)
     before_count = len(before_rows) if before_rows else count_submission_rows(before_table)
+    before_ref = submission_ref(before_rows[0]) if before_rows else ""
     print(f"submissions_before: {before_count}")
+    if before_ref:
+        print(f"latest_ref_before: {before_ref}")
 
     if args.dry_run:
         print("dry_run: submission not sent")
@@ -108,13 +117,15 @@ def main() -> None:
         current_table = submissions_table(args.competition)
         current_rows = submissions_csv(args.competition)
         current_count = len(current_rows) if current_rows else count_submission_rows(current_table)
+        current_ref = submission_ref(current_rows[0]) if current_rows else ""
+        new_record = (current_ref and current_ref != before_ref) or current_count > before_count
         if current_table != last:
             print(current_table)
             last = current_table
-        if current_count > before_count and args.no_wait_score:
+        if new_record and args.no_wait_score:
             print("submission_record_created: true")
             return
-        if current_count > before_count and current_rows:
+        if new_record and current_rows:
             score = public_score(current_rows[0])
             if score:
                 print(f"public_score: {score}")
