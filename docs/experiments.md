@@ -77,6 +77,7 @@
 | s6e6-71 | 2026-06-08 | pending | Nina vote.2 plus Amry GPU-meta top-6 boundary patch | n/a | n/a | 0.97108 | Changed 6 rows versus s6e6-61; below top7/top8 plateau, so rank 7 or rank 8 is needed to recover the 0.97109 score |
 | s6e6-72 | 2026-06-08 | pending | Nina vote.2 plus Amry GPU-meta top-9 boundary patch | n/a | n/a | 0.97109 | Added rank 9 on top of top8; public score tied the top7/top8/top13 plateau, so rank 9 is not visibly harmful |
 | s6e6-73 | 2026-06-08 | pending | Nina vote.2 plus Amry GPU-meta top-10 boundary patch | n/a | n/a | 0.97109 | Added rank 10 on top of top9; the QSO-to-STAR row did not change the rounded public score |
+| s6e6-74 | 2026-06-08 | pending | Nina vote.2 plus Amry GPU-meta top-11 boundary patch | n/a | n/a | 0.97109 | Added rank 11 on top of top10; public score stayed on the 0.97109 plateau |
 | sdss17_w025 | 2026-06-02 | pending | LightGBM seed 2024 + SDSS17 external weight 0.25 | 5 | 0.963139 | n/a | Not submitted; external-data OOF was materially weaker |
 
 ## Calibration Notes
