@@ -75,6 +75,7 @@
 | s6e6-69 | 2026-06-07 | pending | Nina vote.2 plus Amry GPU-meta STAR-target top-20 patch | n/a | n/a | 0.97106 | Changed 20 rows versus s6e6-61; STAR-target-only expansion was too aggressive |
 | s6e6-70 | 2026-06-07 | pending | Nina vote.2 plus Amry GPU-meta custom top-7 patch | n/a | n/a | 0.97109 | Changed 7 rows versus s6e6-61; public score tied s6e6-66/s67 best |
 | s6e6-71 | 2026-06-08 | pending | Nina vote.2 plus Amry GPU-meta top-6 boundary patch | n/a | n/a | 0.97108 | Changed 6 rows versus s6e6-61; below top7/top8 plateau, so rank 7 or rank 8 is needed to recover the 0.97109 score |
+| s6e6-72 | 2026-06-08 | pending | Nina vote.2 plus Amry GPU-meta top-9 boundary patch | n/a | n/a | 0.97109 | Added rank 9 on top of top8; public score tied the top7/top8/top13 plateau, so rank 9 is not visibly harmful |
 | sdss17_w025 | 2026-06-02 | pending | LightGBM seed 2024 + SDSS17 external weight 0.25 | 5 | 0.963139 | n/a | Not submitted; external-data OOF was materially weaker |
 
 ## Calibration Notes
