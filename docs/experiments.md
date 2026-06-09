@@ -84,6 +84,7 @@
 | s6e6-78 | 2026-06-08 | pending | Nina ps-s6e6 public 0.97111 artifact | n/a | n/a | 0.97111 | Direct dataset artifact; 376 rows different from s6e6-75 and lower than the 0.97122 anchor |
 | s6e6-79 | 2026-06-08 | pending | Nina 0.97122 plus Amry rank-46 one-row patch | n/a | n/a | 0.97122 | Changed `id=725150` from GALAXY to STAR; public score tied s6e6-75, so the single row is neutral at leaderboard precision |
 | s6e6-80 | 2026-06-08 | pending | Nina 0.97122 plus Amry top100 unabsorbed 4-row patch | n/a | n/a | 0.97118 | Added ranks 46, 93, 96, and 100; lower than s6e6-75, so the wider unabsorbed Amry window is net negative |
+| s6e6-81 | 2026-06-09 | pending | Nina simple vote.1 public output | n/a | n/a | 0.97135 | Direct public Code output; changed 171 rows versus s6e6-75 and became the new best public score |
 | sdss17_w025 | 2026-06-02 | pending | LightGBM seed 2024 + SDSS17 external weight 0.25 | 5 | 0.963139 | n/a | Not submitted; external-data OOF was materially weaker |
 
 ## Calibration Notes

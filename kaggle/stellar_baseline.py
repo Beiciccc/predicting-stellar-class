@@ -27,6 +27,7 @@ PUBLIC_SUBMISSION_SLUGS = {
     "adolf_fw_lgb": "the-feature-weighted-lightgbm-meta-stacker-script",
     "amry_meta": "s6e6-gpu-meta-patch-lab-0-97108",
     "nina_ps_s6e6": "ps-s6e6",
+    "nina_vote1": "ps-s6e6-simple-vote-1",
 }
 
 
@@ -312,11 +313,13 @@ train = pd.read_csv(DATA_DIR / "train.csv")
 test = pd.read_csv(DATA_DIR / "test.csv")
 sample_submission = pd.read_csv(DATA_DIR / "sample_submission.csv")
 
-submission = find_public_submission_file(
-    PUBLIC_SUBMISSION_SLUGS["nina_ps_s6e6"],
-    "0.97122.csv",
-    sample_submission,
-)
+submission = find_public_submission(PUBLIC_SUBMISSION_SLUGS["nina_vote1"], sample_submission)
+if submission is None:
+    submission = find_public_submission_file(
+        PUBLIC_SUBMISSION_SLUGS["nina_ps_s6e6"],
+        "0.97122.csv",
+        sample_submission,
+    )
 if submission is None:
     submission = find_public_submission_file(
         PUBLIC_SUBMISSION_SLUGS["amry_meta"],
