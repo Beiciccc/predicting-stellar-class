@@ -81,6 +81,11 @@ def main() -> None:
     for n in [1, 3, 5, 7, 10, 13, 15, 16]:
         save(f"jun09_vote1_amry_patch_top{n}", base, patch.head(n))
 
+    top7 = patch.head(7)
+    for row_number in [8, 9, 10]:
+        rows = pd.concat([top7, patch.iloc[[row_number - 1]]], ignore_index=True)
+        save(f"jun09_vote1_amry_patch_top7_plus_r{row_number}", base, rows)
+
 
 if __name__ == "__main__":
     main()
