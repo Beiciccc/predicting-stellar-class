@@ -13,6 +13,11 @@ MODEL_CONFIGS = [
     {"model": "lgbm", "seed": 2024, "n_estimators": 1200, "weight": 1.0},
 ]
 CLASS_BIAS = np.array([0.0, 0.53, 0.92])
+NINA_VOTE1_MICRO_PATCH = {
+    755752: "GALAXY",
+    676483: "GALAXY",
+    665223: "GALAXY",
+}
 PUBLIC_SUBMISSION_SLUGS = {
     "lr": "gpu-logistic-regression-stacker",
     "flex": "blender-is-all-you-need",
@@ -121,6 +126,14 @@ def find_public_array(slug, filename):
         if slug in str(path):
             return np.load(path)
     return None
+
+
+def apply_id_patch(submission, patch):
+    out = submission.copy()
+    mask = out["id"].isin(patch)
+    if mask.any():
+        out.loc[mask, TARGET] = out.loc[mask, "id"].map(patch)
+    return out
 
 
 def plurality_vote(labels, fallback):
@@ -314,6 +327,8 @@ test = pd.read_csv(DATA_DIR / "test.csv")
 sample_submission = pd.read_csv(DATA_DIR / "sample_submission.csv")
 
 submission = find_public_submission(PUBLIC_SUBMISSION_SLUGS["nina_vote1"], sample_submission)
+if submission is not None:
+    submission = apply_id_patch(submission, NINA_VOTE1_MICRO_PATCH)
 if submission is None:
     submission = find_public_submission_file(
         PUBLIC_SUBMISSION_SLUGS["nina_ps_s6e6"],

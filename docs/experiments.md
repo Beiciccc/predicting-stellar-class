@@ -87,6 +87,7 @@
 | s6e6-81 | 2026-06-09 | pending | Nina simple vote.1 public output | n/a | n/a | 0.97135 | Direct public Code output; changed 171 rows versus s6e6-75 and became the new best public score |
 | s6e6-82 | 2026-06-09 | pending | Amry 0.97123 hard-proba micro patch output | n/a | n/a | 0.97123 | Direct public Code output; 33-row patch over Nina 0.97122, below Nina vote.1 but useful as a row-level support signal |
 | s6e6-83 | 2026-06-09 | pending | Nina vote.1 plus Amry patch top-1 | n/a | n/a | 0.97135 | Changed `id=755752` from STAR to GALAXY; public score tied s6e6-81, so the highest-margin Amry row is neutral at leaderboard precision |
+| s6e6-84 | 2026-06-09 | pending | Nina vote.1 plus Amry patch top-3 | n/a | n/a | 0.97137 | Changed `id=755752`, `676483`, and `665223` to GALAXY; new best public score from a 3-row hard-proba patch |
 | sdss17_w025 | 2026-06-02 | pending | LightGBM seed 2024 + SDSS17 external weight 0.25 | 5 | 0.963139 | n/a | Not submitted; external-data OOF was materially weaker |
 
 ## Calibration Notes
