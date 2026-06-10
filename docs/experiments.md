@@ -102,6 +102,7 @@
 | s6e6-96 | 2026-06-10 | pending | Nina vote.1 plus Amry top-7, rows 9, 10, 13, and 16 | n/a | n/a | 0.97137 | Added high-support `id=580482` and `623249` on top of s6e6-95; public score tied the current best |
 | s6e6-97 | 2026-06-10 | pending | Nina vote.1 plus Amry top-7 without row 4 | n/a | n/a | 0.97137 | Removed `id=795768` from the top7 patch; public score tied the current best, so row 4 is not required for the rounded plateau |
 | s6e6-98 | 2026-06-10 | pending | Nina vote.1 plus Amry top-7 without row 6 | n/a | n/a | 0.97137 | Removed `id=646787` from the top7 patch; public score tied the current best, so row 6 is not required for the rounded plateau |
+| s6e6-99 | 2026-06-10 | pending | Nina vote.1 plus Amry top-7 and grid row 614916 | n/a | n/a | 0.97137 | Added Jun10 all-source/grid supported `id=614916` from STAR to GALAXY; public score tied the current best |
 | sdss17_w025 | 2026-06-02 | pending | LightGBM seed 2024 + SDSS17 external weight 0.25 | 5 | 0.963139 | n/a | Not submitted; external-data OOF was materially weaker |
 
 ## Calibration Notes
