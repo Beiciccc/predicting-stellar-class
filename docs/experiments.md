@@ -99,6 +99,7 @@
 | s6e6-93 | 2026-06-10 | pending | Nina vote.1 plus Amry top-3 and row 6 | n/a | n/a | 0.97137 | Added only `id=646787` on top of s6e6-84; public score tied the current best, so row 6 is neutral at leaderboard precision |
 | s6e6-94 | 2026-06-10 | pending | Nina vote.1 plus Amry top-3 and row 7 | n/a | n/a | 0.97137 | Added only `id=595581` on top of s6e6-84; public score tied the current best, so rows 4-7 are individually neutral at leaderboard precision |
 | s6e6-95 | 2026-06-10 | pending | Nina vote.1 plus Amry top-7, row 9, and row 10 | n/a | n/a | 0.97137 | Combined neutral rows `id=730289` and `600202` with top7 while excluding harmful row 8; public score tied the current best |
+| s6e6-96 | 2026-06-10 | pending | Nina vote.1 plus Amry top-7, rows 9, 10, 13, and 16 | n/a | n/a | 0.97137 | Added high-support `id=580482` and `623249` on top of s6e6-95; public score tied the current best |
 | sdss17_w025 | 2026-06-02 | pending | LightGBM seed 2024 + SDSS17 external weight 0.25 | 5 | 0.963139 | n/a | Not submitted; external-data OOF was materially weaker |
 
 ## Calibration Notes
