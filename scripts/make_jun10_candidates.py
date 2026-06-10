@@ -28,6 +28,11 @@ MICRO_TOP3 = {
     665223: "GALAXY",
 }
 
+GRID_PATCH_ROWS = {
+    614916: "GALAXY",
+    703838: "QSO",
+}
+
 FILES = {
     "047b": "0.97047.b.csv",
     "101": "0.97101.csv",
@@ -189,6 +194,16 @@ def main() -> None:
         save(f"jun10_vote1_top3_plus_r{row_number}", apply_rows(vote1, rows), best)
     rows = pd.concat([top7, patch_rows.iloc[[8]], patch_rows.iloc[[9]]], ignore_index=True)
     save("jun10_vote1_top7_plus_r9_r10", apply_rows(vote1, rows), best)
+    rows = pd.concat([top7, patch_rows.iloc[[8]], patch_rows.iloc[[9]], patch_rows.iloc[[12]], patch_rows.iloc[[15]]], ignore_index=True)
+    save("jun10_vote1_top7_plus_r9_r10_r13_r16", apply_rows(vote1, rows), best)
+
+    for row_number in [4, 6]:
+        rows = top7.drop(index=patch_rows.index[row_number - 1]).reset_index(drop=True)
+        save(f"jun10_vote1_top7_drop_r{row_number}", apply_rows(vote1, rows), best)
+
+    top7_frame = apply_rows(vote1, top7)
+    save("jun10_vote1_top7_plus_grid614916", apply_patch_rows(top7_frame, {614916: GRID_PATCH_ROWS[614916]}), best)
+    save("jun10_vote1_top7_plus_grid614916_grid703838", apply_patch_rows(top7_frame, GRID_PATCH_ROWS), best)
 
 
 if __name__ == "__main__":
