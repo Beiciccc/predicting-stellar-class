@@ -24,10 +24,35 @@ MICRO_TOP3 = {
 
 ROW_PATCHES = {
     "r4": {795768: "GALAXY"},
+    "r5": {776857: "GALAXY"},
+    "r6": {646787: "GALAXY"},
+    "r7": {595581: "GALAXY"},
     "r10": {600202: "GALAXY"},
     "r13": {580482: "GALAXY"},
     "nina_742100": {742100: "GALAXY"},
     "nina_584275": {584275: "GALAXY"},
+}
+
+NINA5_QSO_GAL_NOVEL5 = {
+    659588: "GALAXY",
+    736763: "GALAXY",
+    742100: "GALAXY",
+    749913: "GALAXY",
+    817047: "GALAXY",
+}
+NINA5_STAR_GAL_NOVEL2 = {
+    584275: "GALAXY",
+    695569: "GALAXY",
+}
+NINA5_OTHER_NOVEL3 = {
+    643556: "QSO",
+    717110: "STAR",
+    806582: "STAR",
+}
+NINA5_GAL_SUPPORT_PLUS3 = {
+    605444: "GALAXY",
+    608417: "GALAXY",
+    616567: "GALAXY",
 }
 
 
@@ -133,6 +158,25 @@ def main() -> None:
     save(
         "jun11_vote1_top3_plus_742100_584275",
         apply_patch_rows(best, ROW_PATCHES["nina_742100"] | ROW_PATCHES["nina_584275"]),
+        best,
+    )
+    top7_patch = ROW_PATCHES["r4"] | ROW_PATCHES["r5"] | ROW_PATCHES["r6"] | ROW_PATCHES["r7"]
+    nina5_gal_novel7 = NINA5_QSO_GAL_NOVEL5 | NINA5_STAR_GAL_NOVEL2
+    save("jun11_top3_new5_all5_qso_gal_novel5", apply_patch_rows(best, NINA5_QSO_GAL_NOVEL5), best)
+    save("jun11_top3_new5_all5_star_gal_novel2", apply_patch_rows(best, NINA5_STAR_GAL_NOVEL2), best)
+    save("jun11_top3_new5_all5_gal_novel7", apply_patch_rows(best, nina5_gal_novel7), best)
+    save("jun11_top7_drop_r5", apply_patch_rows(best, ROW_PATCHES["r4"] | ROW_PATCHES["r6"] | ROW_PATCHES["r7"]), best)
+    save("jun11_top7_drop_r7", apply_patch_rows(best, ROW_PATCHES["r4"] | ROW_PATCHES["r5"] | ROW_PATCHES["r6"]), best)
+    save("jun11_top7_drop_r4_r6", apply_patch_rows(best, ROW_PATCHES["r5"] | ROW_PATCHES["r7"]), best)
+    save("jun11_top7_new5_all5_gal_novel7_no_r8", apply_patch_rows(best, top7_patch | nina5_gal_novel7), best)
+    save(
+        "jun11_top3_new5_all5_all_novel10",
+        apply_patch_rows(best, nina5_gal_novel7 | NINA5_OTHER_NOVEL3),
+        best,
+    )
+    save(
+        "jun11_top3_new5_gal_support5_plus3",
+        apply_patch_rows(best, nina5_gal_novel7 | NINA5_GAL_SUPPORT_PLUS3),
         best,
     )
     save(
