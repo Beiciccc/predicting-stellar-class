@@ -108,6 +108,7 @@
 | s6e6-102 | 2026-06-11 | pending | Nina vote.1 plus Amry top-3 and Nina five-file novel STAR-to-GALAXY rows | n/a | n/a | 0.97137 | Added `id=584275` and `695569`; public score tied the current best, so this novel STAR-to-GALAXY pair is neutral at leaderboard precision |
 | s6e6-103 | 2026-06-11 | pending | Nina vote.1 plus Amry top-7 without row 5 | n/a | n/a | 0.97137 | Removed `id=776857` from the top7 patch; public score tied the current best, so row 5 is not required for the rounded plateau |
 | s6e6-104 | 2026-06-11 | pending | Nina vote.1 plus Amry top-7 without row 7 | n/a | n/a | 0.97137 | Removed `id=595581` from the top7 patch; public score tied the current best, so row 7 is not required for the rounded plateau |
+| s6e6-105 | 2026-06-11 | pending | Nina vote.1 plus Amry top-7 without rows 4 and 6 | n/a | n/a | 0.97137 | Removed `id=795768` and `646787` from the top7 patch; public score tied the current best, so these rows are jointly nonessential at leaderboard precision |
 | sdss17_w025 | 2026-06-02 | pending | LightGBM seed 2024 + SDSS17 external weight 0.25 | 5 | 0.963139 | n/a | Not submitted; external-data OOF was materially weaker |
 
 ## Calibration Notes
