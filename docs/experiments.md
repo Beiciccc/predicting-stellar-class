@@ -113,6 +113,7 @@
 | s6e6-107 | 2026-06-11 | pending | Nina vote.1 plus Amry top-3 and QSO row 736763 | n/a | n/a | 0.97134 | Added only `id=736763` from QSO to GALAXY; the score matched the five-row group's drop, identifying this row as harmful |
 | s6e6-108 | 2026-06-11 | pending | Nina vote.1 plus Amry top-3 and QSO row 742100 | n/a | n/a | 0.97137 | Added only `id=742100` from QSO to GALAXY; public score tied the current best, so this row is neutral at leaderboard precision |
 | s6e6-109 | 2026-06-11 | pending | Nina vote.1 plus Amry top-3 and QSO row 749913 | n/a | n/a | 0.97137 | Added only `id=749913` from QSO to GALAXY; public score tied the current best, so this row is neutral at leaderboard precision |
+| s6e6-110 | 2026-06-11 | pending | Nina vote.1 plus Amry top-3 and QSO row 817047 | n/a | n/a | 0.97137 | Added only `id=817047` from QSO to GALAXY; public score tied the current best, so among the five-row QSO group only `id=736763` was visibly harmful |
 | sdss17_w025 | 2026-06-02 | pending | LightGBM seed 2024 + SDSS17 external weight 0.25 | 5 | 0.963139 | n/a | Not submitted; external-data OOF was materially weaker |
 
 ## Calibration Notes
