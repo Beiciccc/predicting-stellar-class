@@ -160,6 +160,8 @@ def main() -> None:
         apply_patch_rows(best, ROW_PATCHES["nina_742100"] | ROW_PATCHES["nina_584275"]),
         best,
     )
+    for row_id, label in NINA5_QSO_GAL_NOVEL5.items():
+        save(f"jun11_vote1_top3_plus_{row_id}", apply_patch_rows(best, {row_id: label}), best)
     top7_patch = ROW_PATCHES["r4"] | ROW_PATCHES["r5"] | ROW_PATCHES["r6"] | ROW_PATCHES["r7"]
     nina5_gal_novel7 = NINA5_QSO_GAL_NOVEL5 | NINA5_STAR_GAL_NOVEL2
     save("jun11_top3_new5_all5_qso_gal_novel5", apply_patch_rows(best, NINA5_QSO_GAL_NOVEL5), best)
