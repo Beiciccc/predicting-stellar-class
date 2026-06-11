@@ -104,6 +104,7 @@
 | s6e6-98 | 2026-06-10 | pending | Nina vote.1 plus Amry top-7 without row 6 | n/a | n/a | 0.97137 | Removed `id=646787` from the top7 patch; public score tied the current best, so row 6 is not required for the rounded plateau |
 | s6e6-99 | 2026-06-10 | pending | Nina vote.1 plus Amry top-7 and grid row 614916 | n/a | n/a | 0.97137 | Added Jun10 all-source/grid supported `id=614916` from STAR to GALAXY; public score tied the current best |
 | s6e6-100 | 2026-06-10 | pending | Nina vote.1 plus Amry top-7 and grid rows 614916/703838 | n/a | n/a | 0.97137 | Added `id=614916` STAR to GALAXY and `703838` GALAXY to QSO from the Jun10 grid signals; public score tied the current best |
+| s6e6-101 | 2026-06-11 | pending | Nina vote.1 plus Amry top-3 and Nina five-file novel QSO-to-GALAXY rows | n/a | n/a | 0.97134 | Added `id=659588`, `736763`, `742100`, `749913`, and `817047`; the 5-row novel QSO-to-GALAXY consensus group underperformed, so supersets containing this group are deprioritized |
 | sdss17_w025 | 2026-06-02 | pending | LightGBM seed 2024 + SDSS17 external weight 0.25 | 5 | 0.963139 | n/a | Not submitted; external-data OOF was materially weaker |
 
 ## Calibration Notes
