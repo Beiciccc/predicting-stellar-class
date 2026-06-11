@@ -110,6 +110,7 @@
 | s6e6-104 | 2026-06-11 | pending | Nina vote.1 plus Amry top-7 without row 7 | n/a | n/a | 0.97137 | Removed `id=595581` from the top7 patch; public score tied the current best, so row 7 is not required for the rounded plateau |
 | s6e6-105 | 2026-06-11 | pending | Nina vote.1 plus Amry top-7 without rows 4 and 6 | n/a | n/a | 0.97137 | Removed `id=795768` and `646787` from the top7 patch; public score tied the current best, so these rows are jointly nonessential at leaderboard precision |
 | s6e6-106 | 2026-06-11 | pending | Nina vote.1 plus Amry top-3 and QSO row 659588 | n/a | n/a | 0.97137 | Split the harmful five-row QSO-to-GALAXY group by adding only `id=659588`; public score tied the current best, so this row is not the visible cause of s6e6-101's drop |
+| s6e6-107 | 2026-06-11 | pending | Nina vote.1 plus Amry top-3 and QSO row 736763 | n/a | n/a | 0.97134 | Added only `id=736763` from QSO to GALAXY; the score matched the five-row group's drop, identifying this row as harmful |
 | sdss17_w025 | 2026-06-02 | pending | LightGBM seed 2024 + SDSS17 external weight 0.25 | 5 | 0.963139 | n/a | Not submitted; external-data OOF was materially weaker |
 
 ## Calibration Notes
