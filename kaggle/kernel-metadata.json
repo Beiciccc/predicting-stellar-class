@@ -10,6 +10,7 @@
   "competition_sources": ["playground-series-s6e6"],
   "dataset_sources": ["nina2025/ps-s6e6"],
   "kernel_sources": [
+    "mehrankazeminia/s6e6-stellar-a-deeper-look-at-the-results",
     "cdeotte/gpu-logistic-regression-stacker",
     "flexonafft/blender-is-all-you-need",
     "fachri00/weighted-consensus-patch-0-97047",

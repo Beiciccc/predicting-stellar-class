@@ -19,6 +19,7 @@ NINA_VOTE1_MICRO_PATCH = {
     665223: "GALAXY",
 }
 PUBLIC_SUBMISSION_SLUGS = {
+    "mehran_results": "s6e6-stellar-a-deeper-look-at-the-results",
     "lr": "gpu-logistic-regression-stacker",
     "flex": "blender-is-all-you-need",
     "nina": "ps-s6e6-simple-voting-subsystem",
@@ -326,9 +327,11 @@ train = pd.read_csv(DATA_DIR / "train.csv")
 test = pd.read_csv(DATA_DIR / "test.csv")
 sample_submission = pd.read_csv(DATA_DIR / "sample_submission.csv")
 
-submission = find_public_submission(PUBLIC_SUBMISSION_SLUGS["nina_vote1"], sample_submission)
-if submission is not None:
-    submission = apply_id_patch(submission, NINA_VOTE1_MICRO_PATCH)
+submission = find_public_submission(PUBLIC_SUBMISSION_SLUGS["mehran_results"], sample_submission)
+if submission is None:
+    submission = find_public_submission(PUBLIC_SUBMISSION_SLUGS["nina_vote1"], sample_submission)
+    if submission is not None:
+        submission = apply_id_patch(submission, NINA_VOTE1_MICRO_PATCH)
 if submission is None:
     submission = find_public_submission_file(
         PUBLIC_SUBMISSION_SLUGS["nina_ps_s6e6"],

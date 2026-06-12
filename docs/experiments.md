@@ -114,6 +114,7 @@
 | s6e6-108 | 2026-06-11 | pending | Nina vote.1 plus Amry top-3 and QSO row 742100 | n/a | n/a | 0.97137 | Added only `id=742100` from QSO to GALAXY; public score tied the current best, so this row is neutral at leaderboard precision |
 | s6e6-109 | 2026-06-11 | pending | Nina vote.1 plus Amry top-3 and QSO row 749913 | n/a | n/a | 0.97137 | Added only `id=749913` from QSO to GALAXY; public score tied the current best, so this row is neutral at leaderboard precision |
 | s6e6-110 | 2026-06-11 | pending | Nina vote.1 plus Amry top-3 and QSO row 817047 | n/a | n/a | 0.97137 | Added only `id=817047` from QSO to GALAXY; public score tied the current best, so among the five-row QSO group only `id=736763` was visibly harmful |
+| s6e6-111 | 2026-06-12 | pending | Mehran public result 7-row signal | n/a | n/a | 0.97144 | Direct public result changed seven rows versus s6e6-84/110 and became the new best; public Code now prioritizes this reproducible output before falling back to the Nina vote.1 micro-patch path |
 | sdss17_w025 | 2026-06-02 | pending | LightGBM seed 2024 + SDSS17 external weight 0.25 | 5 | 0.963139 | n/a | Not submitted; external-data OOF was materially weaker |
 
 ## Calibration Notes
