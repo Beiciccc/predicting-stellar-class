@@ -78,6 +78,30 @@ def main() -> None:
         keep = {key: value for key, value in mehran_patch.items() if key != row_id}
         save(f"jun12_mehran_7row_drop_{row_id}", apply_rows(best, keep), best)
 
+    tied_rows = {604784, 643040, 697113, 736948}
+    tied_drop_patch = {
+        key: value for key, value in mehran_patch.items() if key not in tied_rows
+    }
+    save("jun12_mehran_7row_drop_tie4", apply_rows(best, tied_drop_patch), best)
+    tied_drop_plus763670 = {
+        key: value for key, value in tied_drop_patch.items() if key != 763670
+    }
+    save(
+        "jun12_mehran_7row_drop_tie4_763670",
+        apply_rows(best, tied_drop_plus763670),
+        best,
+    )
+    save(
+        "jun12_mehran_7row_drop_tie4_plus_star_pair",
+        apply_rows(apply_rows(best, tied_drop_patch), STAR_PAIR),
+        best,
+    )
+    save(
+        "jun12_mehran_7row_drop_tie4_plus_r10_r13",
+        apply_rows(apply_rows(best, tied_drop_patch), AMRY_NEUTRAL["r10"] | AMRY_NEUTRAL["r13"]),
+        best,
+    )
+
     save("jun12_mehran_7row_plus_star_pair", apply_rows(mehran, STAR_PAIR), best)
     save("jun12_mehran_7row_plus_qso_neutral4", apply_rows(mehran, QSO_NEUTRAL4), best)
     save(

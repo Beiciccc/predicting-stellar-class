@@ -121,6 +121,7 @@
 | s6e6-115 | 2026-06-12 | pending | Mehran 7-row signal without row 697113 | n/a | n/a | 0.97144 | Removed `id=697113` (GALAXY to QSO) from s6e6-111; public score tied the new best, so this row is not required at rounded precision |
 | s6e6-116 | 2026-06-12 | pending | Mehran 7-row signal without row 703858 | n/a | n/a | 0.97143 | Removed `id=703858` (STAR to GALAXY) from s6e6-111; public score slipped below the new best, so this row should stay in the public 7-row signal |
 | s6e6-117 | 2026-06-12 | pending | Mehran 7-row signal without row 643040 | n/a | n/a | 0.97144 | Removed `id=643040` (STAR to GALAXY) from s6e6-111; public score tied the new best, so this row is not required at rounded precision despite stronger cross-source support |
+| s6e6-118 | 2026-06-12 | pending | Mehran 7-row signal without row 763670 | n/a | n/a | 0.97143 | Removed `id=763670` (QSO to GALAXY) from s6e6-111; public score slipped below the new best, so this row should stay with the core positive rows |
 | sdss17_w025 | 2026-06-02 | pending | LightGBM seed 2024 + SDSS17 external weight 0.25 | 5 | 0.963139 | n/a | Not submitted; external-data OOF was materially weaker |
 
 ## Calibration Notes
