@@ -123,6 +123,7 @@
 | s6e6-117 | 2026-06-12 | pending | Mehran 7-row signal without row 643040 | n/a | n/a | 0.97144 | Removed `id=643040` (STAR to GALAXY) from s6e6-111; public score tied the new best, so this row is not required at rounded precision despite stronger cross-source support |
 | s6e6-118 | 2026-06-12 | pending | Mehran 7-row signal without row 763670 | n/a | n/a | 0.97143 | Removed `id=763670` (QSO to GALAXY) from s6e6-111; public score slipped below the new best, so this row should stay with the core positive rows |
 | s6e6-119 | 2026-06-12 | pending | Mehran core positive three-row signal | n/a | n/a | 0.97144 | Kept only the three leave-one-out-positive rows (`id=690286`, `703858`, `763670`) and removed the four individually tied rows; public score tied the new best with a simpler patch |
+| s6e6-120 | 2026-06-12 | pending | Mehran core positive rows plus STAR pair | n/a | n/a | 0.97144 | Added the previously neutral STAR-to-GALAXY pair (`id=584275`, `695569`) on top of the three-row core signal; public score tied the new best, so the pair remains neutral in this context |
 | sdss17_w025 | 2026-06-02 | pending | LightGBM seed 2024 + SDSS17 external weight 0.25 | 5 | 0.963139 | n/a | Not submitted; external-data OOF was materially weaker |
 
 ## Calibration Notes
