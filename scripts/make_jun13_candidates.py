@@ -40,6 +40,21 @@ QSO_NEUTRAL4 = {
     749913: "GALAXY",
     817047: "GALAXY",
 }
+CORE_TIE4 = {
+    604784: "QSO",
+    643040: "GALAXY",
+    697113: "QSO",
+    736948: "QSO",
+}
+STAR_PAIR = {
+    584275: "GALAXY",
+    695569: "GALAXY",
+}
+STAR_TRIO = {
+    600202: "GALAXY",
+    695569: "GALAXY",
+    795768: "GALAXY",
+}
 
 
 def validate(frame: pd.DataFrame, sample: pd.DataFrame, name: str) -> None:
@@ -88,6 +103,15 @@ def main() -> None:
     save("jun13_core3_plus_meenal4", apply_rows(core3, MEENAL4), best7)
     save("jun13_best7_plus_r10_r13", apply_rows(best7, AMRY_NEUTRAL), best7)
     save("jun13_best7_plus_qso_neutral4", apply_rows(best7, QSO_NEUTRAL4), best7)
+
+    for row_id, label in CORE_TIE4.items():
+        save(f"jun13_core_plus_{row_id}", apply_rows(core3, {row_id: label}), best7)
+    for row_id, label in STAR_PAIR.items():
+        save(f"jun13_core_plus_{row_id}", apply_rows(core3, {row_id: label}), best7)
+    for row_id in [600202, 795768]:
+        save(f"jun13_core_plus_{row_id}", apply_rows(core3, {row_id: "GALAXY"}), best7)
+    save("jun13_core_star7_trio", apply_rows(core3, STAR_TRIO), best7)
+    save("jun13_core_qso_neutral4", apply_rows(core3, QSO_NEUTRAL4), best7)
 
 
 if __name__ == "__main__":
