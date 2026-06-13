@@ -103,6 +103,10 @@ def main() -> None:
     save("jun13_core3_plus_meenal4", apply_rows(core3, MEENAL4), best7)
     save("jun13_best7_plus_r10_r13", apply_rows(best7, AMRY_NEUTRAL), best7)
     save("jun13_best7_plus_qso_neutral4", apply_rows(best7, QSO_NEUTRAL4), best7)
+    for row_id, label in MEENAL4.items():
+        save(f"jun13_core_plus_meenal_{row_id}", apply_rows(core3, {row_id: label}), best7)
+    save("jun13_core_plus_meenal_star2", apply_rows(core3, MEENAL_STAR2), best7)
+    save("jun13_core_plus_meenal_qso2", apply_rows(core3, MEENAL_QSO2), best7)
 
     for row_id, label in CORE_TIE4.items():
         save(f"jun13_core_plus_{row_id}", apply_rows(core3, {row_id: label}), best7)

@@ -128,6 +128,7 @@
 | s6e6-122 | 2026-06-13 | pending | Meenal row 672821 on Mehran 7-row best | n/a | n/a | 0.97144 | Added only `id=672821` (STAR to GALAXY) from the Meenal four-row group; public score tied the best, so this row is neutral at rounded precision |
 | s6e6-123 | 2026-06-13 | pending | Core positive rows plus row 643040 | n/a | n/a | 0.97144 | Added `id=643040` (STAR to GALAXY) back onto the s6e6-119 core-positive baseline; public score tied the best, so this tie-row remains neutral when isolated on core |
 | s6e6-124 | 2026-06-13 | pending | Core positive rows plus row 604784 | n/a | n/a | 0.97144 | Added `id=604784` (STAR to QSO) back onto the core-positive baseline; public score tied the best, so this tie-row remains neutral when isolated on core |
+| s6e6-125 | 2026-06-13 | pending | Core positive rows plus row 697113 | n/a | n/a | 0.97144 | Added `id=697113` (GALAXY to QSO) back onto the core-positive baseline; public score tied the best, so this tie-row remains neutral when isolated on core |
 | sdss17_w025 | 2026-06-02 | pending | LightGBM seed 2024 + SDSS17 external weight 0.25 | 5 | 0.963139 | n/a | Not submitted; external-data OOF was materially weaker |
 
 ## Calibration Notes
