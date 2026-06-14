@@ -24,8 +24,11 @@ SOURCES = {
     "jun14_ridge_top75": RIDGE_DIR / "ridge_flip_candidates/ridge_top75.csv",
     "jun14_ridge_top100": RIDGE_DIR / "ridge_flip_candidates/ridge_top100.csv",
     "jun14_ridge_top150": RIDGE_DIR / "ridge_flip_candidates/ridge_top150.csv",
+    "jun14_ridge_top150_tail10": RIDGE_DIR / "ridge_flip_candidates/ridge_top150_tail10.csv",
     "jun14_ridge_top150_tail20": RIDGE_DIR / "ridge_flip_candidates/ridge_top150_tail20.csv",
     "jun14_ridge_top180": RIDGE_DIR / "ridge_flip_candidates/ridge_top180.csv",
+    "jun14_ridge_top180_tail10": RIDGE_DIR / "ridge_flip_candidates/ridge_top180_tail10.csv",
+    "jun14_ridge_top180_tail20": RIDGE_DIR / "ridge_flip_candidates/ridge_top180_tail20.csv",
     "jun14_ridge_top220": RIDGE_DIR / "ridge_flip_candidates/ridge_top220.csv",
     "jun14_ridge_top260": RIDGE_DIR / "ridge_flip_candidates/ridge_top260.csv",
 }
