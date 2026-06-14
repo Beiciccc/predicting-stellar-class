@@ -142,6 +142,7 @@
 | s6e6-136 | 2026-06-14 | pending | Ridge top150 output | n/a | n/a | 0.97200 | Removed the full tail20 group from the ridge default and improved over s6e6-134/s6e6-135; public Code now prioritizes the reproducible `ridge_top150.csv` file |
 | s6e6-137 | 2026-06-14 | pending | Ridge top100 output | n/a | n/a | 0.97207 | Removed rows 101-150 from the s6e6-136 ridge top150 candidate and became the new best; public Code now prioritizes the reproducible `ridge_top100.csv` file |
 | s6e6-138 | 2026-06-14 | pending | Ridge top75 output | n/a | n/a | 0.97206 | Removed rows 76-100 from the s6e6-137 ridge top100 candidate; score slipped slightly, so rows 76-100 are net positive at displayed precision |
+| s6e6-139 | 2026-06-14 | pending | Ridge top90 output | n/a | n/a | 0.97206 | Added only ranks 76-90 back onto top75; score tied s6e6-138 and stayed below top100, pointing to ranks 91-100 as part of the useful top100 gain |
 | sdss17_w025 | 2026-06-02 | pending | LightGBM seed 2024 + SDSS17 external weight 0.25 | 5 | 0.963139 | n/a | Not submitted; external-data OOF was materially weaker |
 
 ## Calibration Notes

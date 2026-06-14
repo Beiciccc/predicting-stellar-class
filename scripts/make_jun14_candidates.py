@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 from __future__ import annotations
 
+import json
 from pathlib import Path
 
 import pandas as pd
@@ -33,6 +34,21 @@ SOURCES = {
     "jun14_ridge_top260": RIDGE_DIR / "ridge_flip_candidates/ridge_top260.csv",
 }
 
+CUSTOM_CUTOFFS = {
+    "jun14_ridge_top90": {
+        "base": "jun14_ridge_top75",
+        "json": RIDGE_DIR / "ridge_flip_candidates/ridge_top100.json",
+        "start": 76,
+        "end": 90,
+    },
+    "jun14_ridge_top110": {
+        "base": "jun14_ridge_top100",
+        "json": RIDGE_DIR / "ridge_flip_candidates/ridge_top150.json",
+        "start": 101,
+        "end": 110,
+    },
+}
+
 
 def validate(frame: pd.DataFrame, sample: pd.DataFrame, name: str) -> None:
     if list(frame.columns) != ["id", TARGET]:
@@ -50,6 +66,16 @@ def save(name: str, frame: pd.DataFrame, reference: pd.DataFrame) -> None:
     print(f"{name}: diff_vs_best7={diff} counts={counts} path={path}")
 
 
+def apply_rank_slice(base: pd.DataFrame, json_path: Path, start: int, end: int) -> pd.DataFrame:
+    with json_path.open() as handle:
+        flips = json.load(handle)["flips"]
+    patch = {row["id"]: row[TARGET] for row in flips[start - 1 : end]}
+    out = base.copy()
+    mask = out["id"].isin(patch)
+    out.loc[mask, TARGET] = out.loc[mask, "id"].map(patch)
+    return out
+
+
 def main() -> None:
     sample = pd.read_csv(SAMPLE)
     best7 = pd.read_csv(BEST7)
@@ -57,6 +83,17 @@ def main() -> None:
     seen: dict[tuple[str, ...], str] = {}
     for name, source in SOURCES.items():
         frame = pd.read_csv(source)
+        validate(frame, sample, name)
+        key = tuple(frame[TARGET].astype(str))
+        duplicate = seen.get(key)
+        save(name, frame, best7)
+        if duplicate:
+            print(f"{name}: duplicate_of={duplicate}")
+        else:
+            seen[key] = name
+    for name, config in CUSTOM_CUTOFFS.items():
+        base = pd.read_csv(OUT_DIR / f"{config['base']}.csv")
+        frame = apply_rank_slice(base, config["json"], config["start"], config["end"])
         validate(frame, sample, name)
         key = tuple(frame[TARGET].astype(str))
         duplicate = seen.get(key)
