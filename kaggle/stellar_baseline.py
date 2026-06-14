@@ -333,7 +333,7 @@ sample_submission = pd.read_csv(DATA_DIR / "sample_submission.csv")
 
 submission = find_public_submission_file(
     PUBLIC_SUBMISSION_SLUGS["nithin_ridge"],
-    "ridge_flip_candidates/ridge_top150.csv",
+    "ridge_flip_candidates/ridge_top100.csv",
     sample_submission,
 )
 if submission is None:
