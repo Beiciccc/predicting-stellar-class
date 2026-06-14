@@ -8,7 +8,10 @@
   "enable_gpu": false,
   "enable_internet": false,
   "competition_sources": ["playground-series-s6e6"],
-  "dataset_sources": ["nina2025/ps-s6e6"],
+  "dataset_sources": [
+    "nina2025/ps-s6e6",
+    "vladislavagamova/s6e6-097186-final-submission"
+  ],
   "kernel_sources": [
     "mehrankazeminia/s6e6-stellar-a-deeper-look-at-the-results",
     "cdeotte/gpu-logistic-regression-stacker",
