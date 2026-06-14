@@ -37,6 +37,7 @@ PUBLIC_SUBMISSION_SLUGS = {
     "nina_vote4": "ps-s6e6-simple-vote-4",
     "meenal_ensemble": "ps-s6e6-ensemble",
     "vlad_final": "s6e6-097186-final-submission",
+    "nithin_ridge": "0-9717-public-score-ridge-flip-ensemble",
 }
 
 
@@ -330,7 +331,9 @@ train = pd.read_csv(DATA_DIR / "train.csv")
 test = pd.read_csv(DATA_DIR / "test.csv")
 sample_submission = pd.read_csv(DATA_DIR / "sample_submission.csv")
 
-submission = find_public_submission(PUBLIC_SUBMISSION_SLUGS["vlad_final"], sample_submission)
+submission = find_public_submission(PUBLIC_SUBMISSION_SLUGS["nithin_ridge"], sample_submission)
+if submission is None:
+    submission = find_public_submission(PUBLIC_SUBMISSION_SLUGS["vlad_final"], sample_submission)
 if submission is None:
     submission = find_public_submission(PUBLIC_SUBMISSION_SLUGS["meenal_ensemble"], sample_submission)
 if submission is None:

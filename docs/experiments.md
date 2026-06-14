@@ -137,6 +137,7 @@
 | s6e6-131 | 2026-06-14 | pending | Nina simple vote.4 refresh public output | n/a | n/a | 0.97179 | Direct public Code output changed 251 rows versus the Mehran 7-row best and became the new best; public Code now prioritizes the reproducible vote.4 output before older fallbacks |
 | s6e6-132 | 2026-06-14 | pending | Meenal ensemble refresh public output | n/a | n/a | 0.97185 | Direct public Code output changed 483 rows versus the Mehran 7-row best and improved on s6e6-131; public Code now prioritizes this reproducible ensemble before the vote.4 fallback |
 | s6e6-133 | 2026-06-14 | pending | Vlad 0.97186 final dataset output | n/a | n/a | 0.97186 | Direct public dataset output changed 273 rows versus the Mehran 7-row best and edged above s6e6-132; public Code now prioritizes this dataset source before the Meenal and vote.4 fallbacks |
+| s6e6-134 | 2026-06-14 | pending | Nithin ridge flip default output | n/a | n/a | 0.97196 | Direct public ridge output changed 433 rows versus the Mehran 7-row best and became the new best; this confirms the ridge flip family is the strongest public-reproducible line so far |
 | sdss17_w025 | 2026-06-02 | pending | LightGBM seed 2024 + SDSS17 external weight 0.25 | 5 | 0.963139 | n/a | Not submitted; external-data OOF was materially weaker |
 
 ## Calibration Notes
