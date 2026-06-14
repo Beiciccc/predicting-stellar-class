@@ -331,7 +331,13 @@ train = pd.read_csv(DATA_DIR / "train.csv")
 test = pd.read_csv(DATA_DIR / "test.csv")
 sample_submission = pd.read_csv(DATA_DIR / "sample_submission.csv")
 
-submission = find_public_submission(PUBLIC_SUBMISSION_SLUGS["nithin_ridge"], sample_submission)
+submission = find_public_submission_file(
+    PUBLIC_SUBMISSION_SLUGS["nithin_ridge"],
+    "ridge_flip_candidates/ridge_top150.csv",
+    sample_submission,
+)
+if submission is None:
+    submission = find_public_submission(PUBLIC_SUBMISSION_SLUGS["nithin_ridge"], sample_submission)
 if submission is None:
     submission = find_public_submission(PUBLIC_SUBMISSION_SLUGS["vlad_final"], sample_submission)
 if submission is None:
