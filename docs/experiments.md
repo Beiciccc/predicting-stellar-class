@@ -134,6 +134,7 @@
 | s6e6-128 | 2026-06-13 | pending | Core positive rows plus Meenal row 672821 | n/a | n/a | 0.97144 | Added `id=672821` (STAR to GALAXY) from the Meenal four-row signal onto the core-positive baseline; public score tied the best, matching the earlier full-best single-row probe |
 | s6e6-129 | 2026-06-13 | pending | Core positive rows plus Meenal row 735431 | n/a | n/a | 0.97144 | Added `id=735431` (QSO to GALAXY) from the Meenal four-row signal onto the core-positive baseline; public score tied the best, so all four Meenal single rows tested so far are neutral |
 | s6e6-130 | 2026-06-13 | pending | Core positive rows plus all four Meenal rows | n/a | n/a | 0.97144 | Added all four Meenal rows (`672821`, `735431`, `785671`, `795768`) onto the core-positive baseline; public score tied the best, confirming the group is neutral in both full-best and core contexts |
+| s6e6-131 | 2026-06-14 | pending | Nina simple vote.4 refresh public output | n/a | n/a | 0.97179 | Direct public Code output changed 251 rows versus the Mehran 7-row best and became the new best; public Code now prioritizes the reproducible vote.4 output before older fallbacks |
 | sdss17_w025 | 2026-06-02 | pending | LightGBM seed 2024 + SDSS17 external weight 0.25 | 5 | 0.963139 | n/a | Not submitted; external-data OOF was materially weaker |
 
 ## Calibration Notes
