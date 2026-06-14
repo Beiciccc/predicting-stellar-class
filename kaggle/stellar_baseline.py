@@ -1,4 +1,5 @@
 from collections import Counter
+import json
 from pathlib import Path
 
 import numpy as np
@@ -131,6 +132,34 @@ def find_public_array(slug, filename):
         if slug in str(path):
             return np.load(path)
     return None
+
+
+def find_public_json(slug, filename):
+    input_root = Path("/kaggle/input")
+    for path in input_root.glob(f"**/{slug}/{filename}"):
+        with path.open() as handle:
+            return json.load(handle)
+    for path in input_root.glob(f"**/{slug}/**/{filename}"):
+        with path.open() as handle:
+            return json.load(handle)
+    for path in input_root.glob(f"**/{filename}"):
+        if slug in str(path):
+            with path.open() as handle:
+                return json.load(handle)
+    return None
+
+
+def apply_ridge_rank_slice(submission, slug, filename, start, end):
+    metadata = find_public_json(slug, filename)
+    if metadata is None or "flips" not in metadata:
+        return None
+    patch = {row["id"]: row[TARGET] for row in metadata["flips"][start - 1 : end]}
+    out = submission.copy()
+    mask = out["id"].isin(patch)
+    if not mask.any():
+        return None
+    out.loc[mask, TARGET] = out.loc[mask, "id"].map(patch)
+    return out
 
 
 def apply_id_patch(submission, patch):
@@ -331,11 +360,22 @@ train = pd.read_csv(DATA_DIR / "train.csv")
 test = pd.read_csv(DATA_DIR / "test.csv")
 sample_submission = pd.read_csv(DATA_DIR / "sample_submission.csv")
 
-submission = find_public_submission_file(
+submission = None
+ridge_top100 = find_public_submission_file(
     PUBLIC_SUBMISSION_SLUGS["nithin_ridge"],
     "ridge_flip_candidates/ridge_top100.csv",
     sample_submission,
 )
+if ridge_top100 is not None:
+    submission = apply_ridge_rank_slice(
+        ridge_top100,
+        PUBLIC_SUBMISSION_SLUGS["nithin_ridge"],
+        "ridge_flip_candidates/ridge_top150.json",
+        101,
+        110,
+    )
+if submission is None:
+    submission = ridge_top100
 if submission is None:
     submission = find_public_submission(PUBLIC_SUBMISSION_SLUGS["nithin_ridge"], sample_submission)
 if submission is None:
