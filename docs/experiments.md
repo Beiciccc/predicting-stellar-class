@@ -148,6 +148,7 @@
 | s6e6-142 | 2026-06-15 | pending | Ridge top111 output | n/a | n/a | 0.97209 | Added rank 111 onto the ridge top110 best; public score tied the best, so the single extra rank is neutral at displayed precision |
 | s6e6-143 | 2026-06-15 | pending | Ridge top112 output | n/a | n/a | 0.97209 | Added ranks 111-112 onto the ridge top110 best; public score tied the best, so this small extension remains neutral at displayed precision |
 | s6e6-144 | 2026-06-15 | pending | Ridge top110 without rank108 | n/a | n/a | 0.97209 | Reverted rank108 (`id=687775`) from the top110 best back to the top100 label; public score tied the best, so this low-support row is neutral at displayed precision |
+| s6e6-145 | 2026-06-15 | pending | Ridge top110 without rank109 | n/a | n/a | 0.97209 | Reverted rank109 (`id=696191`) from the top110 best back to the top100 label; public score tied the best, so this low-support row is also neutral at displayed precision |
 | sdss17_w025 | 2026-06-02 | pending | LightGBM seed 2024 + SDSS17 external weight 0.25 | 5 | 0.963139 | n/a | Not submitted; external-data OOF was materially weaker |
 
 ## Calibration Notes
