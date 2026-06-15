@@ -145,6 +145,7 @@
 | s6e6-139 | 2026-06-14 | pending | Ridge top90 output | n/a | n/a | 0.97206 | Added only ranks 76-90 back onto top75; score tied s6e6-138 and stayed below top100, pointing to ranks 91-100 as part of the useful top100 gain |
 | s6e6-140 | 2026-06-14 | pending | Ridge top110 output | n/a | n/a | 0.97209 | Added ranks 101-110 onto s6e6-137 top100 and became the new best; public Code now reproduces this rank-slice candidate from `ridge_top100.csv` plus `ridge_top150.json` |
 | s6e6-141 | 2026-06-15 | pending | Ridge top105 output | n/a | n/a | 0.97208 | Added ranks 101-105 onto the ridge top100 baseline; score stayed below top110, so ranks 106-110 remain net positive at displayed precision |
+| s6e6-142 | 2026-06-15 | pending | Ridge top111 output | n/a | n/a | 0.97209 | Added rank 111 onto the ridge top110 best; public score tied the best, so the single extra rank is neutral at displayed precision |
 | sdss17_w025 | 2026-06-02 | pending | LightGBM seed 2024 + SDSS17 external weight 0.25 | 5 | 0.963139 | n/a | Not submitted; external-data OOF was materially weaker |
 
 ## Calibration Notes
