@@ -155,6 +155,7 @@
 | s6e6-149 | 2026-06-15 | pending | Ridge top115 output | n/a | n/a | 0.97208 | Added ranks 111-115 onto the ridge top110 best; public score slipped below the best, so the 113-115 extension is net negative at displayed precision |
 | s6e6-150 | 2026-06-15 | pending | Ridge top100 plus ranks106-110 | n/a | n/a | 0.97208 | Added only ranks 106-110 onto the ridge top100 baseline while excluding ranks 101-105; public score stayed below top110, so ranks 101-105 still matter in combination with 106-110 |
 | s6e6-151 | 2026-06-16 | pending | Shamanth public blend direct output | n/a | n/a | 0.97021 | Tested the newly updated public blend output directly; score was far below the ridge top110 family, so it is not a useful anchor for the current search |
+| s6e6-152 | 2026-06-16 | pending | Ridge top110 without rank110 | n/a | n/a | 0.97208 | Reverted rank110 (`id=604682`) from the top110 best back to the top100 label; public score slipped, so rank110 is a necessary positive row in the top110 slice |
 | sdss17_w025 | 2026-06-02 | pending | LightGBM seed 2024 + SDSS17 external weight 0.25 | 5 | 0.963139 | n/a | Not submitted; external-data OOF was materially weaker |
 
 ## Calibration Notes
