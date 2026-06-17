@@ -164,6 +164,7 @@
 | s6e6-158 | 2026-06-16 | pending | Ridge top110 without rank101 | n/a | n/a | 0.97208 | Reverted rank101 (`id=746524`) from the top110 best back to the top100 label; public score slipped, so rank101 is a necessary positive row in the top110 slice |
 | s6e6-159 | 2026-06-16 | pending | Ridge top110 without ranks106-109 | n/a | n/a | 0.97209 | Reverted ranks 106-109 together while keeping ranks 101-105 and 110; public score tied the best, so this whole middle block is neutral at displayed precision |
 | s6e6-160 | 2026-06-16 | pending | Ridge top110 without ranks104-106 | n/a | n/a | 0.97209 | Reverted ranks 104-106 together from the top110 best; public score tied the best, so this adjacent neutral block also does not change the displayed score |
+| s6e6-161 | 2026-06-17 | pending | Meenal iterative ridge direct output | n/a | n/a | 0.97227 | Directly submitted the new iterative ridge output with metadata showing a multi-round path from a 0.97220 anchor; this became the new local best and is the next anchor |
 | sdss17_w025 | 2026-06-02 | pending | LightGBM seed 2024 + SDSS17 external weight 0.25 | 5 | 0.963139 | n/a | Not submitted; external-data OOF was materially weaker |
 
 ## Calibration Notes
