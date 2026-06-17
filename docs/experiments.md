@@ -167,6 +167,7 @@
 | s6e6-161 | 2026-06-17 | pending | Meenal iterative ridge direct output | n/a | n/a | 0.97227 | Directly submitted the new iterative ridge output with metadata showing a multi-round path from a 0.97220 anchor; this became the new local best and is the next anchor |
 | s6e6-162 | 2026-06-17 | pending | Meenal final output without final round | n/a | n/a | 0.97226 | Reverted the four final-round Meenal flips from the s6e6-161 anchor; score slipped slightly, confirming the final round is net positive |
 | s6e6-163 | 2026-06-17 | pending | Meenal final output without final row 708331 | n/a | n/a | 0.97227 | Reverted the final-round `id=708331` flip from QSO-to-STAR back to QSO; score tied the new best, so this row is neutral at displayed precision |
+| s6e6-164 | 2026-06-17 | pending | Meenal final output without final row 609284 | n/a | n/a | 0.97227 | Reverted the final-round `id=609284` flip from STAR-to-GALAXY back to STAR; score tied the new best, so this row is neutral at displayed precision |
 | sdss17_w025 | 2026-06-02 | pending | LightGBM seed 2024 + SDSS17 external weight 0.25 | 5 | 0.963139 | n/a | Not submitted; external-data OOF was materially weaker |
 
 ## Calibration Notes
