@@ -173,6 +173,7 @@
 | s6e6-167 | 2026-06-17 | pending | Meenal final output without final neutral trio | n/a | n/a | 0.97227 | Reverted final-round rows `708331`, `609284`, and `734050` together while keeping necessary row `633980`; score tied the best, so the trio is neutral as a group |
 | s6e6-168 | 2026-06-17 | pending | Meenal final output without round3 row 672821 | n/a | n/a | 0.97227 | Reverted round3 `id=672821` from GALAXY back to STAR; score tied the best, so this previously seen row remains neutral at displayed precision |
 | s6e6-169 | 2026-06-17 | pending | Meenal final output without round3 row 744816 | n/a | n/a | 0.97226 | Reverted round3 `id=744816` from GALAXY back to QSO; score slipped, so this row is necessary positive signal |
+| s6e6-170 | 2026-06-17 | pending | Meenal final output without round3 row 651337 | n/a | n/a | 0.97227 | Reverted round3 `id=651337` from STAR back to GALAXY; score tied the best, so this distinctive GALAXY-to-STAR flip is neutral at displayed precision |
 | sdss17_w025 | 2026-06-02 | pending | LightGBM seed 2024 + SDSS17 external weight 0.25 | 5 | 0.963139 | n/a | Not submitted; external-data OOF was materially weaker |
 
 ## Calibration Notes
