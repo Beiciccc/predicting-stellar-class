@@ -176,6 +176,7 @@
 | s6e6-170 | 2026-06-17 | pending | Meenal final output without round3 row 651337 | n/a | n/a | 0.97227 | Reverted round3 `id=651337` from STAR back to GALAXY; score tied the best, so this distinctive GALAXY-to-STAR flip is neutral at displayed precision |
 | s6e6-171a | 2026-06-18 | pending | Danush ridge refinement direct output | n/a | n/a | 0.97229 | Direct public-refinement output improved the visible best by 0.00002 over the Meenal anchor and becomes the Jun18 anchor for follow-up probes |
 | s6e6-171b | 2026-06-18 | pending | Meenal final output without round3 row 591015 | n/a | n/a | 0.97226 | Reverted round3 `id=591015` from GALAXY back to STAR; score slipped, so this row joins `744816` as necessary positive round3 signal |
+| s6e6-173 | 2026-06-18 | pending | Danush ridge refinement without row 616366 | n/a | n/a | 0.97229 | Reverted low-support Danush flip `id=616366` from GALAXY back to STAR; score tied the Jun18 best, so the row is not visibly necessary |
 | sdss17_w025 | 2026-06-02 | pending | LightGBM seed 2024 + SDSS17 external weight 0.25 | 5 | 0.963139 | n/a | Not submitted; external-data OOF was materially weaker |
 
 ## Calibration Notes
