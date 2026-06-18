@@ -178,6 +178,8 @@
 | s6e6-171b | 2026-06-18 | pending | Meenal final output without round3 row 591015 | n/a | n/a | 0.97226 | Reverted round3 `id=591015` from GALAXY back to STAR; score slipped, so this row joins `744816` as necessary positive round3 signal |
 | s6e6-173 | 2026-06-18 | pending | Danush ridge refinement without row 616366 | n/a | n/a | 0.97229 | Reverted low-support Danush flip `id=616366` from GALAXY back to STAR; score tied the Jun18 best, so the row is not visibly necessary |
 | s6e6-174 | 2026-06-18 | pending | Danush ridge refinement without row 738534 | n/a | n/a | 0.97228 | Reverted low-support Danush flip `id=738534` from GALAXY back to STAR; score slipped, so the row is positive signal despite weak external support |
+| s6e6-175a | 2026-06-18 | pending | Danush ridge refinement without row 819523 | n/a | n/a | 0.97229 | Reverted mixed-support Danush flip `id=819523` from GALAXY back to STAR; score tied the Jun18 best, so the row is not visibly necessary |
+| s6e6-175b | 2026-06-18 | pending | Danush ridge refinement without row 578987 | n/a | n/a | 0.97229 | Reverted mixed-support Danush flip `id=578987` from GALAXY back to STAR; score tied the Jun18 best, so the row is also neutral at displayed precision |
 | sdss17_w025 | 2026-06-02 | pending | LightGBM seed 2024 + SDSS17 external weight 0.25 | 5 | 0.963139 | n/a | Not submitted; external-data OOF was materially weaker |
 
 ## Calibration Notes
