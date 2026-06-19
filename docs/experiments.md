@@ -192,6 +192,7 @@
 | s6e6-184 | 2026-06-19 | pending | Danush ridge refinement without row 794347 | n/a | n/a | 0.97229 | Reverted Danush flip `id=794347` from GALAXY back to STAR; score tied the Jun18 best, so this highly supported flip is not visibly necessary |
 | s6e6-185 | 2026-06-19 | pending | Danush ridge refinement without row 763006 | n/a | n/a | 0.97229 | Reverted Danush flip `id=763006` from STAR back to QSO; score tied the Jun18 best, so this QSO-to-STAR flip is not visibly necessary |
 | s6e6-186 | 2026-06-19 | pending | Danush ridge refinement without row 809015 | n/a | n/a | 0.97229 | Reverted Danush flip `id=809015` from STAR back to QSO; score tied the Jun18 best, so this second QSO-to-STAR flip is not visibly necessary |
+| s6e6-187 | 2026-06-19 | pending | Danush ridge refinement without QSO2 rows 763006/809015 | n/a | n/a | 0.97229 | Reverted both QSO-to-STAR Danush flips together; score tied the Jun18 best, so the pair is jointly neutral at displayed precision |
 | sdss17_w025 | 2026-06-02 | pending | LightGBM seed 2024 + SDSS17 external weight 0.25 | 5 | 0.963139 | n/a | Not submitted; external-data OOF was materially weaker |
 
 ## Calibration Notes
