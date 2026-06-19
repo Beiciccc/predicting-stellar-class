@@ -189,6 +189,7 @@
 | s6e6-181 | 2026-06-19 | pending | Danush ridge refinement without neutral9 plus row 727038 | n/a | n/a | 0.97229 | Added the individually tied `id=727038` reversion onto the 9-row neutral prune; the 10-row prune still tied the Jun18 best |
 | s6e6-182 | 2026-06-19 | pending | Danush ridge refinement without row 750509 | n/a | n/a | 0.97229 | Reverted Danush flip `id=750509` from GALAXY back to STAR; score tied the Jun18 best, so this STAR-to-GALAXY flip is not visibly necessary |
 | s6e6-183 | 2026-06-19 | pending | Danush ridge refinement without row 823303 | n/a | n/a | 0.97228 | Reverted Danush flip `id=823303` from GALAXY back to STAR; score slipped, so this STAR-to-GALAXY flip is positive signal and should stay |
+| s6e6-184 | 2026-06-19 | pending | Danush ridge refinement without row 794347 | n/a | n/a | 0.97229 | Reverted Danush flip `id=794347` from GALAXY back to STAR; score tied the Jun18 best, so this highly supported flip is not visibly necessary |
 | sdss17_w025 | 2026-06-02 | pending | LightGBM seed 2024 + SDSS17 external weight 0.25 | 5 | 0.963139 | n/a | Not submitted; external-data OOF was materially weaker |
 
 ## Calibration Notes
