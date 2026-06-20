@@ -199,6 +199,7 @@
 | s6e6-191 | 2026-06-20 | pending | Neutral14 prune without Meenal round2 row 609647 | n/a | n/a | 0.97229 | Reverted `id=609647` from GALAXY back to STAR on top of the neutral14-pruned anchor; score tied the best, so this row is neutral at displayed precision |
 | s6e6-192 | 2026-06-20 | pending | Neutral14 prune without Meenal round1 row 641215 | n/a | n/a | 0.97228 | Reverted `id=641215` from GALAXY back to QSO on top of the neutral14-pruned anchor; score slipped, so the GALAXY label is positive signal and should stay |
 | s6e6-193 | 2026-06-20 | pending | Neutral14 prune without Meenal round2 row 711926 | n/a | n/a | 0.97229 | Reverted `id=711926` from GALAXY back to STAR on top of the neutral14-pruned anchor; score tied the best, so this row is neutral at displayed precision |
+| s6e6-194 | 2026-06-20 | pending | Neutral14 prune without Meenal round2 row 689779 | n/a | n/a | 0.97228 | Reverted `id=689779` from GALAXY back to STAR on top of the neutral14-pruned anchor; score slipped, so the GALAXY label is positive signal and should stay |
 | sdss17_w025 | 2026-06-02 | pending | LightGBM seed 2024 + SDSS17 external weight 0.25 | 5 | 0.963139 | n/a | Not submitted; external-data OOF was materially weaker |
 
 ## Calibration Notes
