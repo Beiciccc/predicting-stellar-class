@@ -211,6 +211,8 @@
 | s6e6-201b | 2026-06-21 | pending | S200 without row 697264 duplicate record | n/a | n/a | 0.97230 | Official list accepted a duplicate 697264 leave-one-out record; it matched s6e6-201 and only confirms the neutral result |
 | s6e6-202 | 2026-06-21 | pending | S200 without Danush refresh row 697483 | n/a | n/a | 0.97230 | Removed only `id=697483` from the six-row refresh while keeping the other five new Danush flips; score tied s6e6-200, so this row is neutral at displayed precision |
 | s6e6-202b | 2026-06-21 | pending | S200 without row 697483 duplicate record | n/a | n/a | 0.97230 | Official list accepted a duplicate 697483 leave-one-out record; it matched s6e6-202 and only confirms the neutral result |
+| s6e6-203 | 2026-06-21 | pending | S200 without Danush refresh row 702637 | n/a | n/a | 0.97229 | Removed only `id=702637` from the six-row refresh while keeping the other five new Danush flips; score slipped, so this row is positive signal and should stay |
+| s6e6-203b | 2026-06-21 | pending | S200 without neutral pair 697264/697483 | n/a | n/a | 0.97230 | Removed the two individually tied refresh rows `697264` and `697483` together; score tied s6e6-200, confirming the pair is jointly neutral at displayed precision |
 | sdss17_w025 | 2026-06-02 | pending | LightGBM seed 2024 + SDSS17 external weight 0.25 | 5 | 0.963139 | n/a | Not submitted; external-data OOF was materially weaker |
 
 ## Calibration Notes
