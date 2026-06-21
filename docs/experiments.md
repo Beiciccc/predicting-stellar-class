@@ -204,6 +204,7 @@
 | s6e6-196 | 2026-06-20 | pending | Neutral14 prune without Meenal round1 row 661612 | n/a | n/a | 0.97228 | Reverted `id=661612` from GALAXY back to STAR on top of the neutral14-pruned anchor; score slipped, so the GALAXY label is positive signal and should stay |
 | s6e6-197 | 2026-06-20 | pending | Neutral14 prune without round2 neutral trio | n/a | n/a | 0.97229 | Reverted the individually tied round2 rows `580363`, `609647`, and `711926` from GALAXY back to STAR together; the trio still tied the best |
 | s6e6-198 | 2026-06-20 | pending | Neutral14 prune without four neutral Meenal rows | n/a | n/a | 0.97229 | Added the tied round1 row `701895` to the round2 neutral trio reversion (`580363`, `609647`, `711926`); the four-row combination still tied the best |
+| s6e6-199 | 2026-06-21 | pending | Danush ridge refresh direct output | n/a | n/a | 0.97230 | Directly submitted the refreshed public Danush ridge output; it changed six rows versus the Jun19 Danush output and improved the local best by 0.00001 |
 | sdss17_w025 | 2026-06-02 | pending | LightGBM seed 2024 + SDSS17 external weight 0.25 | 5 | 0.963139 | n/a | Not submitted; external-data OOF was materially weaker |
 
 ## Calibration Notes
