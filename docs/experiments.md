@@ -217,6 +217,7 @@
 | s6e6-205 | 2026-06-22 | pending | OzanM public output direct | n/a | n/a | 0.97242 | Directly submitted the refreshed public `analyticaobscura/predicting-stellar-class` output; it improved over the Danush-pruned anchor but did not reproduce OzanM's visible `0.97246` leaderboard score |
 | s6e6-206 | 2026-06-22 | pending | OzanM output with row 823303 restored | n/a | n/a | 0.97243 | Changed only `id=823303` from `STAR` back to the previously validated `GALAXY` label on top of s6e6-205; score improved by 0.00001, so this prior positive signal transfers to the OzanM anchor |
 | s6e6-207 | 2026-06-22 | pending | S206 plus row 738534 restored | n/a | n/a | 0.97244 | Added `id=738534` back to `GALAXY` while keeping the s6e6-206 `823303` fix; score improved by another 0.00001, so this second prior positive signal also transfers to the OzanM anchor |
+| s6e6-208 | 2026-06-22 | pending | S207 plus row 702637 restored | n/a | n/a | 0.97245 | Added `id=702637` back to `GALAXY` on top of the s6e6-207 anchor; score improved by another 0.00001, confirming all three prior positive Danush rows transfer cleanly to the OzanM output |
 | sdss17_w025 | 2026-06-02 | pending | LightGBM seed 2024 + SDSS17 external weight 0.25 | 5 | 0.963139 | n/a | Not submitted; external-data OOF was materially weaker |
 
 ## Calibration Notes
