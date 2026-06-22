@@ -41,7 +41,7 @@ def submissions_table(competition: str) -> str:
 
 
 def submissions_csv(competition: str) -> list[dict[str, str]]:
-    text = run(["kaggle", "competitions", "submissions", "-c", competition, "-v"])
+    text = run(["kaggle", "competitions", "submissions", competition, "--csv"])
     if not text or "No submissions found" in text:
         return []
     return list(csv.DictReader(io.StringIO(text)))

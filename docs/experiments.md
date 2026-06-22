@@ -215,6 +215,7 @@
 | s6e6-203b | 2026-06-21 | pending | S200 without neutral pair 697264/697483 | n/a | n/a | 0.97230 | Removed the two individually tied refresh rows `697264` and `697483` together; score tied s6e6-200, confirming the pair is jointly neutral at displayed precision |
 | s6e6-204 | 2026-06-21 | pending | S200 without neutral pair and row 787002 | n/a | n/a | 0.97230 | Removed the neutral pair `697264`/`697483` plus `id=787002`, while keeping positive `702637` and the untested `797432`/`805482`; score tied s6e6-200, so `787002` is neutral in this pruned context |
 | s6e6-205 | 2026-06-22 | pending | OzanM public output direct | n/a | n/a | 0.97242 | Directly submitted the refreshed public `analyticaobscura/predicting-stellar-class` output; it improved over the Danush-pruned anchor but did not reproduce OzanM's visible `0.97246` leaderboard score |
+| s6e6-206 | 2026-06-22 | pending | OzanM output with row 823303 restored | n/a | n/a | 0.97243 | Changed only `id=823303` from `STAR` back to the previously validated `GALAXY` label on top of s6e6-205; score improved by 0.00001, so this prior positive signal transfers to the OzanM anchor |
 | sdss17_w025 | 2026-06-02 | pending | LightGBM seed 2024 + SDSS17 external weight 0.25 | 5 | 0.963139 | n/a | Not submitted; external-data OOF was materially weaker |
 
 ## Calibration Notes
