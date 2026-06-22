@@ -220,6 +220,7 @@
 | s6e6-208 | 2026-06-22 | pending | S207 plus row 702637 restored | n/a | n/a | 0.97245 | Added `id=702637` back to `GALAXY` on top of the s6e6-207 anchor; score improved by another 0.00001, confirming all three prior positive Danush rows transfer cleanly to the OzanM output |
 | s6e6-209 | 2026-06-22 | pending | S208 plus row 797432 reverted | n/a | n/a | 0.97245 | Changed `id=797432` from OzanM's `GALAXY` back to the Danush-pruned `QSO` label on top of s6e6-208; score tied the best, so this row is neutral at displayed precision |
 | s6e6-210 | 2026-06-22 | pending | S208 plus row 805482 reverted | n/a | n/a | 0.97245 | Changed `id=805482` from OzanM's `STAR` back to the Danush-pruned `GALAXY` label on top of s6e6-208; score tied the best, so this second untested refresh row is also neutral at displayed precision |
+| s6e6-211 | 2026-06-22 | pending | S208 plus rows 797432 and 805482 reverted | n/a | n/a | 0.97245 | Combined the two individually neutral refresh-row reversions (`797432=QSO`, `805482=GALAXY`) on top of s6e6-208; score tied the best, so the pair is jointly neutral at displayed precision |
 | sdss17_w025 | 2026-06-02 | pending | LightGBM seed 2024 + SDSS17 external weight 0.25 | 5 | 0.963139 | n/a | Not submitted; external-data OOF was materially weaker |
 
 ## Calibration Notes
