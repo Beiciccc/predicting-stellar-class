@@ -44,6 +44,11 @@ def submissions_csv(competition: str) -> list[dict[str, str]]:
     text = run(["kaggle", "competitions", "submissions", competition, "--csv"])
     if not text or "No submissions found" in text:
         return []
+    lines = text.splitlines()
+    for index, line in enumerate(lines):
+        if line.startswith("ref,"):
+            text = "\n".join(lines[index:])
+            break
     return list(csv.DictReader(io.StringIO(text)))
 
 
