@@ -225,6 +225,7 @@
 | s6e6-213 | 2026-06-22 | pending | S208 plus row 604466 consensus revert | n/a | n/a | 0.97244 | Changed `id=604466` from OzanM's `GALAXY` to the all-reference consensus `STAR` label on top of s6e6-208; score dropped, so OzanM's `GALAXY` label should be kept despite broad reference disagreement |
 | s6e6-214 | 2026-06-22 | pending | S208 plus row 611775 consensus revert | n/a | n/a | 0.97245 | Changed `id=611775` from OzanM's `GALAXY` to the all-reference consensus `QSO` label on top of s6e6-208; score tied the best, so this high-consensus disagreement is neutral at displayed precision |
 | s6e6-215 | 2026-06-23 | pending | S208 plus row 628409 consensus QSO | n/a | n/a | 0.97248 | Changed `id=628409` from OzanM's `STAR` to the all-reference consensus `QSO` label on top of s6e6-208; score improved by 0.00003 and becomes the new local best |
+| s6e6-216 | 2026-06-23 | pending | S215 plus row 603211 consensus GALAXY | n/a | n/a | 0.97243 | Changed `id=603211` from `STAR` to the high-consensus `GALAXY` label on top of s6e6-215; score dropped sharply, so this OzanM `STAR` label should be kept |
 | sdss17_w025 | 2026-06-02 | pending | LightGBM seed 2024 + SDSS17 external weight 0.25 | 5 | 0.963139 | n/a | Not submitted; external-data OOF was materially weaker |
 
 ## Calibration Notes
