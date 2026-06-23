@@ -228,6 +228,7 @@
 | s6e6-216 | 2026-06-23 | pending | S215 plus row 603211 consensus GALAXY | n/a | n/a | 0.97243 | Changed `id=603211` from `STAR` to the high-consensus `GALAXY` label on top of s6e6-215; score dropped sharply, so this OzanM `STAR` label should be kept |
 | s6e6-217 | 2026-06-23 | pending | S215 plus neutral rows 813794 and 611775 | n/a | n/a | 0.97248 | Added the two previously neutral consensus reversions (`813794=GALAXY`, `611775=QSO`) on top of s6e6-215; score tied the best, so the pair remains neutral in the stronger context |
 | s6e6-218 | 2026-06-23 | pending | S217 plus neutral rows 797432 and 805482 | n/a | n/a | 0.97248 | Added `797432=QSO` and `805482=GALAXY` on top of the s6e6-217 neutral pair; score tied the best, so all four neutral-row reversions remain jointly neutral with the new `628409` gain |
+| s6e6-219 | 2026-06-23 | pending | S215 plus row 781381 consensus QSO | n/a | n/a | 0.97243 | Changed `id=781381` from `STAR` to the high-consensus `QSO` label on top of s6e6-215; score dropped sharply, so this OzanM `STAR` label should be kept |
 | sdss17_w025 | 2026-06-02 | pending | LightGBM seed 2024 + SDSS17 external weight 0.25 | 5 | 0.963139 | n/a | Not submitted; external-data OOF was materially weaker |
 
 ## Calibration Notes
