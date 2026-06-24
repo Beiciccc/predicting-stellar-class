@@ -234,6 +234,7 @@
 | s6e6-222 | 2026-06-23 | pending | S215 plus row 629962 consensus QSO | n/a | n/a | 0.97248 | Changed `id=629962` from `GALAXY` to the high-consensus `QSO` label on top of s6e6-215; score tied the best, so this GALAXY-to-QSO probe is neutral at displayed precision |
 | s6e6-223 | 2026-06-23 | pending | S215 plus row 741335 consensus STAR | n/a | n/a | 0.97248 | Changed `id=741335` from `QSO` to the high-consensus `STAR` label on top of s6e6-215; score tied the best, so this QSO-to-STAR boundary probe is neutral at displayed precision |
 | s6e6-224 | 2026-06-23 | pending | S215 plus row 794347 consensus GALAXY | n/a | n/a | 0.97248 | Changed `id=794347` from `STAR` to the majority-consensus `GALAXY` label on top of s6e6-215; score tied the best, so this migrated Danush-neutral row remains neutral at displayed precision |
+| s6e6-225 | 2026-06-24 | pending | S215 plus neutral-row package | n/a | n/a | 0.97248 | Combined nine previously neutral probes (`611775`, `813794`, `797432`, `805482`, `738449`, `777416`, `629962`, `741335`, `794347`) on top of s6e6-215; score tied the best, so there is no visible cumulative gain from the neutral package |
 | sdss17_w025 | 2026-06-02 | pending | LightGBM seed 2024 + SDSS17 external weight 0.25 | 5 | 0.963139 | n/a | Not submitted; external-data OOF was materially weaker |
 
 ## Calibration Notes
