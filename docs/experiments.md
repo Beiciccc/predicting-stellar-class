@@ -236,6 +236,7 @@
 | s6e6-224 | 2026-06-23 | pending | S215 plus row 794347 consensus GALAXY | n/a | n/a | 0.97248 | Changed `id=794347` from `STAR` to the majority-consensus `GALAXY` label on top of s6e6-215; score tied the best, so this migrated Danush-neutral row remains neutral at displayed precision |
 | s6e6-225 | 2026-06-24 | pending | S215 plus neutral-row package | n/a | n/a | 0.97248 | Combined nine previously neutral probes (`611775`, `813794`, `797432`, `805482`, `738449`, `777416`, `629962`, `741335`, `794347`) on top of s6e6-215; score tied the best, so there is no visible cumulative gain from the neutral package |
 | s6e6-226 | 2026-06-24 | pending | S215 plus row 699261 consensus STAR | n/a | n/a | 0.97248 | Changed `id=699261` from `GALAXY` to the high-consensus `STAR` label on top of s6e6-215; score tied the best, so this row is neutral at displayed precision |
+| s6e6-227 | 2026-06-24 | pending | S215 plus row 797135 consensus STAR | n/a | n/a | 0.97248 | Changed `id=797135` from `GALAXY` to the high-consensus `STAR` label on top of s6e6-215; score tied the best, so this row is neutral at displayed precision |
 | sdss17_w025 | 2026-06-02 | pending | LightGBM seed 2024 + SDSS17 external weight 0.25 | 5 | 0.963139 | n/a | Not submitted; external-data OOF was materially weaker |
 
 ## Calibration Notes
