@@ -243,6 +243,7 @@
 | s6e6-231 | 2026-06-24 | rejected | S215 plus row 688760 consensus QSO | n/a | n/a | 0.97247 | Changed `id=688760` from `GALAXY` to the high-consensus `QSO` label on top of s6e6-215; public score dropped below the 0.97248 baseline, so this row should not be accumulated |
 | s6e6-232 | 2026-06-24 | pending | S215 plus row 710944 consensus QSO | n/a | n/a | 0.97248 | Changed `id=710944` from `GALAXY` to the high-consensus `QSO` label on top of s6e6-215; score tied the best, so this row is neutral at displayed precision |
 | s6e6-233 | 2026-06-24 | pending | S215 plus row 747281 consensus STAR | n/a | n/a | 0.97248 | Changed `id=747281` from `GALAXY` to the high-consensus `STAR` label on top of s6e6-215; score tied the best, so this row is neutral at displayed precision |
+| s6e6-234 | 2026-06-24 | rejected | S215 plus row 761598 consensus STAR | n/a | n/a | 0.97247 | Changed `id=761598` from `GALAXY` to the high-consensus `STAR` label on top of s6e6-215; public score dropped below the 0.97248 baseline, so this row should not be accumulated |
 | sdss17_w025 | 2026-06-02 | pending | LightGBM seed 2024 + SDSS17 external weight 0.25 | 5 | 0.963139 | n/a | Not submitted; external-data OOF was materially weaker |
 
 ## Calibration Notes
