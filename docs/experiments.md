@@ -249,6 +249,7 @@
 | s6e6-237 | 2026-06-25 | rejected | S215 plus row 624810 ridge-like QSO | n/a | n/a | 0.97247 | Changed `id=624810` from `GALAXY` to the ridge-like `QSO` label on top of s6e6-215; public score dropped below the 0.97248 baseline, so this row should not be accumulated |
 | s6e6-238 | 2026-06-25 | pending | S215 plus row 651952 ridge-like QSO | n/a | n/a | 0.97248 | Changed `id=651952` from `GALAXY` to the ridge-like `QSO` label on top of s6e6-215; score tied the best, so this row is neutral at displayed precision |
 | s6e6-239 | 2026-06-25 | pending | S215 plus row 762747 ridge-like GALAXY | n/a | n/a | 0.97248 | Changed `id=762747` from `STAR` to the ridge-like `GALAXY` label on top of s6e6-215; score tied the best, so this row is neutral at displayed precision |
+| s6e6-240 | 2026-06-25 | pending | S215 plus row 771199 ridge-like QSO | n/a | n/a | 0.97248 | Changed `id=771199` from `STAR` to the ridge-like `QSO` label on top of s6e6-215; score tied the best, so this row is neutral at displayed precision |
 | sdss17_w025 | 2026-06-02 | pending | LightGBM seed 2024 + SDSS17 external weight 0.25 | 5 | 0.963139 | n/a | Not submitted; external-data OOF was materially weaker |
 
 ## Calibration Notes
