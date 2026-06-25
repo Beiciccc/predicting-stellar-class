@@ -251,6 +251,7 @@
 | s6e6-239 | 2026-06-25 | pending | S215 plus row 762747 ridge-like GALAXY | n/a | n/a | 0.97248 | Changed `id=762747` from `STAR` to the ridge-like `GALAXY` label on top of s6e6-215; score tied the best, so this row is neutral at displayed precision |
 | s6e6-240 | 2026-06-25 | pending | S215 plus row 771199 ridge-like QSO | n/a | n/a | 0.97248 | Changed `id=771199` from `STAR` to the ridge-like `QSO` label on top of s6e6-215; score tied the best, so this row is neutral at displayed precision |
 | s6e6-241 | 2026-06-25 | accepted | S215 plus row 820648 ridge-like GALAXY | n/a | n/a | 0.97249 | Changed `id=820648` from `STAR` to the ridge-like `GALAXY` label on top of s6e6-215; score improved above the 0.97248 baseline, so this becomes the new local best |
+| s6e6-242 | 2026-06-25 | pending | S241 plus neutral four-row package | n/a | n/a | 0.97249 | Added the previously tied rows (`578987=GALAXY`, `651952=QSO`, `762747=GALAXY`, `771199=QSO`) on top of s6e6-241; score tied the new best, so the package remains neutral in the stronger context |
 | sdss17_w025 | 2026-06-02 | pending | LightGBM seed 2024 + SDSS17 external weight 0.25 | 5 | 0.963139 | n/a | Not submitted; external-data OOF was materially weaker |
 
 ## Calibration Notes
