@@ -261,6 +261,7 @@
 | s6e6-249 | 2026-06-28 | rejected | Dinesh ridge K96 output | n/a | n/a | 0.97250 | Submitted the Dinesh K96 ridge variant; score matched K94 and remained below the Titan/Raunak anchor |
 | s6e6-250 | 2026-06-28 | rejected | Dinesh ridge K98 output | n/a | n/a | 0.97249 | Submitted the Dinesh K98 ridge variant; score dropped below K94/K96 and the active Titan/Raunak anchor, so the wider K98 changes are not accumulated |
 | s6e6-251 | 2026-06-28 | pending | Titan anchor plus row 578987 GALAXY | n/a | n/a | 0.97254 | Changed `id=578987` from `STAR` to `GALAXY` on top of s6e6-246; score tied the active best, so the row is neutral at displayed precision |
+| s6e6-252 | 2026-06-28 | pending | Titan anchor plus row 669357 GALAXY | n/a | n/a | 0.97254 | Changed `id=669357` from `QSO` to `GALAXY` on top of s6e6-246; score tied the active best, so the row is neutral at displayed precision |
 | sdss17_w025 | 2026-06-02 | pending | LightGBM seed 2024 + SDSS17 external weight 0.25 | 5 | 0.963139 | n/a | Not submitted; external-data OOF was materially weaker |
 
 ## Calibration Notes
