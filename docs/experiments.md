@@ -255,6 +255,7 @@
 | s6e6-243 | 2026-06-25 | pending | S241 plus row 685015 ridge-like GALAXY | n/a | n/a | 0.97249 | Changed `id=685015` from `QSO` to the ridge-like `GALAXY` label on top of s6e6-241; score tied the new best, so this row is neutral at displayed precision |
 | s6e6-244 | 2026-06-25 | pending | S241 plus row 821770 ridge-like GALAXY | n/a | n/a | 0.97249 | Changed `id=821770` from `QSO` to the ridge-like `GALAXY` label on top of s6e6-241; score tied the new best, so this row is neutral at displayed precision |
 | s6e6-245 | 2026-06-26 | pending | S241 plus row 824077 ridge-like QSO | n/a | n/a | 0.97249 | Changed `id=824077` from `GALAXY` to the ridge-like `QSO` label on top of s6e6-241; score tied the best, so this row is neutral at displayed precision |
+| s6e6-246 | 2026-06-28 | accepted | Titan-Lite v3 public anchor | n/a | n/a | 0.97254 | Directly submitted the refreshed public Titan/Raunak-family output; it improved over the s6e6-241/s6e6-245 plateau and becomes the new local best anchor |
 | sdss17_w025 | 2026-06-02 | pending | LightGBM seed 2024 + SDSS17 external weight 0.25 | 5 | 0.963139 | n/a | Not submitted; external-data OOF was materially weaker |
 
 ## Calibration Notes
