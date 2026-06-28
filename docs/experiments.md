@@ -259,6 +259,7 @@
 | s6e6-247 | 2026-06-28 | rejected | 0.97252 neighbor public anchor | n/a | n/a | 0.97252 | Submitted the one-row neighbor that changes `id=820648` from `GALAXY` back to `STAR`; score dropped below s6e6-246, confirming the Titan/Raunak `GALAXY` label should be kept |
 | s6e6-248 | 2026-06-28 | rejected | Dinesh ridge K94 output | n/a | n/a | 0.97250 | Submitted the Dinesh K94 ridge variant as an anchor sanity check; score stayed below s6e6-246, so it is not used as the active anchor |
 | s6e6-249 | 2026-06-28 | rejected | Dinesh ridge K96 output | n/a | n/a | 0.97250 | Submitted the Dinesh K96 ridge variant; score matched K94 and remained below the Titan/Raunak anchor |
+| s6e6-250 | 2026-06-28 | rejected | Dinesh ridge K98 output | n/a | n/a | 0.97249 | Submitted the Dinesh K98 ridge variant; score dropped below K94/K96 and the active Titan/Raunak anchor, so the wider K98 changes are not accumulated |
 | sdss17_w025 | 2026-06-02 | pending | LightGBM seed 2024 + SDSS17 external weight 0.25 | 5 | 0.963139 | n/a | Not submitted; external-data OOF was materially weaker |
 
 ## Calibration Notes
