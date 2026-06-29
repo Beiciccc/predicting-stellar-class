@@ -266,6 +266,7 @@
 | s6e6-254 | 2026-06-28 | rejected | Titan anchor plus row 782762 GALAXY | n/a | n/a | 0.97249 | Changed `id=782762` from `STAR` to `GALAXY` on top of s6e6-246; score dropped below the active best, so the row should not be accumulated |
 | s6e6-255 | 2026-06-28 | pending | Titan anchor plus row 815509 GALAXY | n/a | n/a | 0.97254 | Changed `id=815509` from `STAR` to `GALAXY` on top of s6e6-246; score tied the active best, so the row is neutral at displayed precision |
 | s6e6-256 | 2026-06-29 | accepted | Raunak v3 public anchor refresh | n/a | n/a | 0.97259 | Directly submitted the refreshed Raunak v3 output built from a stronger public anchor; it improved over the Titan/Raunak-family 0.97254 plateau and becomes the new local best |
+| s6e6-257 | 2026-06-29 | pending | S256 plus Malik corrected 18-row package | n/a | n/a | 0.97259 | Added the Malik extra QSO-to-GALAXY rows while preserving `id=820648` as `GALAXY`; score tied s6e6-256, so the package is neutral at displayed precision |
 | sdss17_w025 | 2026-06-02 | pending | LightGBM seed 2024 + SDSS17 external weight 0.25 | 5 | 0.963139 | n/a | Not submitted; external-data OOF was materially weaker |
 
 ## Calibration Notes
