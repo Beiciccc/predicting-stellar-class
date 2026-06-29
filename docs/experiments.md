@@ -271,6 +271,7 @@
 | s6e6-259 | 2026-06-29 | pending | S256 plus row 659588 GALAXY | n/a | n/a | 0.97259 | Changed `id=659588` from `QSO` to `GALAXY` on top of s6e6-256; score tied the active best, so the row is neutral at displayed precision |
 | s6e6-260 | 2026-06-29 | pending | S256 plus row 669264 GALAXY | n/a | n/a | 0.97259 | Changed `id=669264` from `QSO` to `GALAXY` on top of s6e6-256; score tied the active best, so the row is neutral at displayed precision |
 | s6e6-261 | 2026-06-29 | pending | S256 plus row 596725 GALAXY | n/a | n/a | 0.97259 | Changed `id=596725` from `QSO` to `GALAXY` on top of s6e6-256; score tied the active best, so the row is neutral at displayed precision |
+| s6e6-262 | 2026-06-29 | pending | S256 plus row 763006 STAR | n/a | n/a | 0.97259 | Changed `id=763006` from `QSO` to `STAR` on top of s6e6-256; score tied the active best, so the row is neutral at displayed precision |
 | sdss17_w025 | 2026-06-02 | pending | LightGBM seed 2024 + SDSS17 external weight 0.25 | 5 | 0.963139 | n/a | Not submitted; external-data OOF was materially weaker |
 
 ## Calibration Notes
