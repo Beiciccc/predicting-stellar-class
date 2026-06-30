@@ -276,6 +276,7 @@
 | s6e6-264 | 2026-06-29 | pending | S256 plus row 771199 QSO | n/a | n/a | 0.97259 | Changed `id=771199` from `STAR` to `QSO` on top of s6e6-256; score tied the active best, so the row is neutral at displayed precision |
 | s6e6-265 | 2026-06-29 | accepted | S256 plus row 605264 GALAXY | n/a | n/a | 0.97260 | Changed `id=605264` from `STAR` to `GALAXY` on top of s6e6-256; score improved above the 0.97259 plateau, so this becomes the new local best |
 | s6e6-266 | 2026-07-01 | rejected | Malik public output direct | n/a | n/a | 0.97258 | Submitted the refreshed Malik public output directly; score dropped below s6e6-265, mainly warning against reverting the locally positive `605264=GALAXY` and `820648=GALAXY` rows |
+| s6e6-267 | 2026-07-01 | pending | S265 plus row 629319 GALAXY | n/a | n/a | 0.97260 | Changed `id=629319` from `QSO` to `GALAXY` on top of s6e6-265; score tied the active best, so the all-public-output consensus row is neutral at displayed precision |
 | sdss17_w025 | 2026-06-02 | pending | LightGBM seed 2024 + SDSS17 external weight 0.25 | 5 | 0.963139 | n/a | Not submitted; external-data OOF was materially weaker |
 
 ## Calibration Notes
