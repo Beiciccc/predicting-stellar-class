@@ -284,6 +284,7 @@
 | s6e6-272 | 2026-07-01 | accepted | Nina 0.97111 private anchor revisit | n/a | n/a | 0.97111 | Re-submitted the historical s6e6-78 artifact after final private scores became visible; private score 0.97022 improves over the late public-hillclimb 0.97001 private plateau, making it the stronger final-score anchor |
 | s6e6-273 | 2026-07-01 | pending | Jun10 vote1 grid614916/grid703838 revisit | n/a | n/a | 0.97137 | Re-submitted historical s6e6-100 after final private scores became visible; private score 0.97020 confirms this Jun10 family is stronger than the late public-hillclimb plateau but below the s6e6-272 private anchor |
 | s6e6-274 | 2026-07-01 | pending | Jun10 vote1 grid614916 revisit | n/a | n/a | 0.97137 | Re-submitted historical s6e6-99 after final private scores became visible; private score 0.97020 matches the two-row Jun10 grid variant, so `703838` does not create a displayed private-score difference |
+| s6e6-275 | 2026-07-01 | pending | Jun09 vote1 top7 plus row9 revisit | n/a | n/a | 0.97137 | Re-submitted historical s6e6-89 after final private scores became visible; private score 0.97020 matches the Jun10 final-score family and remains below the s6e6-272 private anchor |
 | sdss17_w025 | 2026-06-02 | pending | LightGBM seed 2024 + SDSS17 external weight 0.25 | 5 | 0.963139 | n/a | Not submitted; external-data OOF was materially weaker |
 
 ## Calibration Notes
