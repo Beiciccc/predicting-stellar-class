@@ -280,6 +280,7 @@
 | s6e6-268 | 2026-07-01 | accepted | S265 plus row 734121 GALAXY | n/a | n/a | 0.97261 | Changed `id=734121` from `STAR` to `GALAXY` on top of s6e6-265; score improved above the 0.97260 plateau, so this becomes the new local best |
 | s6e6-269 | 2026-07-01 | pending | S268 plus row 629319 GALAXY | n/a | n/a | 0.97261 | Added the previously neutral `id=629319` QSO-to-GALAXY change on top of s6e6-268; score tied the active best, so it remains neutral in the stronger context |
 | s6e6-270 | 2026-07-01 | pending | S268 plus row 645501 GALAXY | n/a | n/a | 0.97261 | Changed `id=645501` from `QSO` to `GALAXY` on top of s6e6-268; score tied the active best, so this high-margin public-consensus row is neutral at displayed precision |
+| s6e6-271 | 2026-07-01 | rejected | CDeotte GPU LR stacker latest artifact | n/a | n/a | 0.97037 | Submitted the locally downloaded latest stacker artifact; score was far below both s6e6-268 public and the stronger historical private anchors, so this downloaded latest file should not be used |
 | sdss17_w025 | 2026-06-02 | pending | LightGBM seed 2024 + SDSS17 external weight 0.25 | 5 | 0.963139 | n/a | Not submitted; external-data OOF was materially weaker |
 
 ## Calibration Notes
