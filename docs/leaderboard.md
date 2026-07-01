@@ -1,5 +1,22 @@
 # Leaderboard Notes
 
+## Final Result
+
+Snapshot: 2026-07-01 03:45 UTC
+
+Team: Kun Zhang (`beicicc`)
+
+| leaderboard | rank | score | counted submission | submission time |
+| --- | ---: | ---: | --- | --- |
+| Public | 38 | 0.97261 | `s6e6-269` | 2026-06-30 23:57:44 UTC |
+| Private | 426 | 0.97001 | `s6e6-269` | 2026-06-30 23:57:44 UTC |
+
+The final public leaderboard contains 2825 rows. The private rank was obtained
+from the final leaderboard paging endpoint. Later score-audit submissions are
+kept in the experiment log but are not the official final leaderboard result.
+
+## Earlier Snapshot
+
 Snapshot: 2026-06-09 02:05 UTC
 
 | rank | team | public score |

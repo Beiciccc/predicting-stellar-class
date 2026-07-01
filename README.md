@@ -8,6 +8,7 @@ Kaggle Playground Series S6E6 project for predicting stellar object class labels
 - Submission format: `id,class`
 - Daily submission limit: 10
 - Final submission deadline: 2026-06-30 23:59 UTC
+- Status: completed
 
 ## Repository Contents
 
@@ -66,5 +67,13 @@ submission file. These generated artifacts are ignored by git.
 
 ## Results
 
-Experiment results are tracked in [docs/experiments.md](docs/experiments.md).
+Official final leaderboard result:
 
+| leaderboard | rank | score | counted submission |
+| --- | ---: | ---: | --- |
+| Public | 38 | 0.97261 | `s6e6-269` |
+| Private | 426 | 0.97001 | `s6e6-269` |
+
+The final counted submission was made on 2026-06-30 at 23:57:44 UTC. Experiment
+details are tracked in [docs/experiments.md](docs/experiments.md), and final
+leaderboard notes are in [docs/leaderboard.md](docs/leaderboard.md).
